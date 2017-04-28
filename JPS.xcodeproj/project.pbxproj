@@ -7,11 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		663FB5EA1EA8BFE500426126 /* LogOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5E91EA8BFE500426126 /* LogOut.xib */; };
+		663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */; };
+		666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666730B91E8C42B5003F40C4 /* Pref.swift */; };
+		666730BC1E8C42B5003F40C4 /* Pref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666730BA1E8C42B5003F40C4 /* Pref.xib */; };
+		66795A791E980A86009A0089 /* Upload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66795A781E980A86009A0089 /* Upload.xib */; };
+		667C4B391EADFD9B0030257B /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = 667C4B381EADFD9B0030257B /* close.png */; };
+		6683A4701EA758BA003461A8 /* dataRetro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6683A46F1EA758BA003461A8 /* dataRetro.swift */; };
+		6683A4B51EA7B7F9003461A8 /* collec.png in Resources */ = {isa = PBXBuildFile; fileRef = 6683A4B41EA7B7F9003461A8 /* collec.png */; };
+		6683A4B71EA7B81D003461A8 /* logo v2-t.ico in Resources */ = {isa = PBXBuildFile; fileRef = 6683A4B61EA7B81D003461A8 /* logo v2-t.ico */; };
 		6687A1101E830580004554AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687A10F1E830580004554AE /* AppDelegate.swift */; };
 		6687A1121E830581004554AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6687A1111E830581004554AE /* Assets.xcassets */; };
 		6687A1151E830581004554AE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6687A1131E830581004554AE /* MainMenu.xib */; };
 		6687A1201E830582004554AE /* JPSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687A11F1E830582004554AE /* JPSTests.swift */; };
 		6687A12B1E830583004554AE /* JPSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6687A12A1E830583004554AE /* JPSUITests.swift */; };
+		668CD41E1EB1E9850047AAEF /* General.xib in Resources */ = {isa = PBXBuildFile; fileRef = 668CD41D1EB1E9850047AAEF /* General.xib */; };
+		668CD4211EB1F07C0047AAEF /* mbap.png in Resources */ = {isa = PBXBuildFile; fileRef = 668CD4201EB1F07C0047AAEF /* mbap.png */; };
+		668CD4241EB215100047AAEF /* about.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668CD4221EB215100047AAEF /* about.swift */; };
+		668CD4251EB215100047AAEF /* about.xib in Resources */ = {isa = PBXBuildFile; fileRef = 668CD4231EB215100047AAEF /* about.xib */; };
+		668CD4281EB220D60047AAEF /* bgAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = 668CD4271EB220D60047AAEF /* bgAbout.png */; };
+		668CD42C1EB240F70047AAEF /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 668CD42B1EB240F70047AAEF /* icon.png */; };
+		669CD5501E885ABD00A0E9FB /* WorkingClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669CD54F1E885ABD00A0E9FB /* WorkingClass.swift */; };
+		669CD5521E885F6400A0E9FB /* Studying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669CD5511E885F6400A0E9FB /* Studying.swift */; };
+		669CD5541E88623F00A0E9FB /* Inactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669CD5531E88623F00A0E9FB /* Inactive.swift */; };
+		66D4AC451E85265A007B340C /* SleepHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4AC441E85265A007B340C /* SleepHandler.swift */; };
+		66D4AC471E85AA34007B340C /* userHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4AC461E85AA34007B340C /* userHandler.swift */; };
+		66EF456E1E96A81D00DFFFC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66EF456C1E96A81D00DFFFC7 /* ViewController.swift */; };
+		66EF45711E96AA7300DFFFC7 /* Updates.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66EF45701E96AA7300DFFFC7 /* Updates.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +54,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		663FB5E91EA8BFE500426126 /* LogOut.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogOut.xib; sourceTree = "<group>"; };
+		663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit-button-icon-18.png"; sourceTree = "<group>"; };
+		666730B91E8C42B5003F40C4 /* Pref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pref.swift; sourceTree = "<group>"; };
+		666730BA1E8C42B5003F40C4 /* Pref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pref.xib; sourceTree = "<group>"; };
+		666730BD1E8C55AA003F40C4 /* JPS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JPS.entitlements; sourceTree = "<group>"; };
+		66795A781E980A86009A0089 /* Upload.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Upload.xib; sourceTree = "<group>"; };
+		667C4B381EADFD9B0030257B /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
+		6683A46F1EA758BA003461A8 /* dataRetro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dataRetro.swift; sourceTree = "<group>"; };
+		6683A4B41EA7B7F9003461A8 /* collec.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = collec.png; sourceTree = "<group>"; };
+		6683A4B61EA7B81D003461A8 /* logo v2-t.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "logo v2-t.ico"; sourceTree = "<group>"; };
 		6687A10C1E830580004554AE /* JPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6687A10F1E830580004554AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6687A1111E830581004554AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,6 +75,19 @@
 		6687A1261E830582004554AE /* JPSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JPSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6687A12A1E830583004554AE /* JPSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPSUITests.swift; sourceTree = "<group>"; };
 		6687A12C1E830583004554AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		668CD41D1EB1E9850047AAEF /* General.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = General.xib; sourceTree = "<group>"; };
+		668CD4201EB1F07C0047AAEF /* mbap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mbap.png; sourceTree = "<group>"; };
+		668CD4221EB215100047AAEF /* about.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = about.swift; sourceTree = "<group>"; };
+		668CD4231EB215100047AAEF /* about.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = about.xib; sourceTree = "<group>"; };
+		668CD4271EB220D60047AAEF /* bgAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bgAbout.png; sourceTree = "<group>"; };
+		668CD42B1EB240F70047AAEF /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		669CD54F1E885ABD00A0E9FB /* WorkingClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkingClass.swift; sourceTree = "<group>"; };
+		669CD5511E885F6400A0E9FB /* Studying.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Studying.swift; sourceTree = "<group>"; };
+		669CD5531E88623F00A0E9FB /* Inactive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inactive.swift; sourceTree = "<group>"; };
+		66D4AC441E85265A007B340C /* SleepHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepHandler.swift; sourceTree = "<group>"; };
+		66D4AC461E85AA34007B340C /* userHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userHandler.swift; sourceTree = "<group>"; };
+		66EF456C1E96A81D00DFFFC7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		66EF45701E96AA7300DFFFC7 /* Updates.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Updates.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +138,19 @@
 		6687A10E1E830580004554AE /* JPS */ = {
 			isa = PBXGroup;
 			children = (
+				668CD41F1EB1F04D0047AAEF /* Random Images */,
+				666730BD1E8C55AA003F40C4 /* JPS.entitlements */,
 				6687A10F1E830580004554AE /* AppDelegate.swift */,
+				668CD42D1EB249BC0047AAEF /* Activity Handlers */,
 				6687A1111E830581004554AE /* Assets.xcassets */,
 				6687A1131E830581004554AE /* MainMenu.xib */,
 				6687A1161E830581004554AE /* Info.plist */,
+				66D4AC461E85AA34007B340C /* userHandler.swift */,
+				666730B91E8C42B5003F40C4 /* Pref.swift */,
+				668CD41C1EB1E92B0047AAEF /* Pref Xibs */,
+				66EF456C1E96A81D00DFFFC7 /* ViewController.swift */,
+				6683A46F1EA758BA003461A8 /* dataRetro.swift */,
+				668CD4261EB215150047AAEF /* About */,
 			);
 			path = JPS;
 			sourceTree = "<group>";
@@ -117,6 +171,52 @@
 				6687A12C1E830583004554AE /* Info.plist */,
 			);
 			path = JPSUITests;
+			sourceTree = "<group>";
+		};
+		668CD41C1EB1E92B0047AAEF /* Pref Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				666730BA1E8C42B5003F40C4 /* Pref.xib */,
+				66EF45701E96AA7300DFFFC7 /* Updates.xib */,
+				66795A781E980A86009A0089 /* Upload.xib */,
+				663FB5E91EA8BFE500426126 /* LogOut.xib */,
+				668CD41D1EB1E9850047AAEF /* General.xib */,
+			);
+			name = "Pref Xibs";
+			sourceTree = "<group>";
+		};
+		668CD41F1EB1F04D0047AAEF /* Random Images */ = {
+			isa = PBXGroup;
+			children = (
+				668CD42B1EB240F70047AAEF /* icon.png */,
+				668CD4201EB1F07C0047AAEF /* mbap.png */,
+				668CD4271EB220D60047AAEF /* bgAbout.png */,
+				667C4B381EADFD9B0030257B /* close.png */,
+				6683A4B41EA7B7F9003461A8 /* collec.png */,
+				6683A4B61EA7B81D003461A8 /* logo v2-t.ico */,
+				663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */,
+			);
+			name = "Random Images";
+			sourceTree = "<group>";
+		};
+		668CD4261EB215150047AAEF /* About */ = {
+			isa = PBXGroup;
+			children = (
+				668CD4221EB215100047AAEF /* about.swift */,
+				668CD4231EB215100047AAEF /* about.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		668CD42D1EB249BC0047AAEF /* Activity Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				66D4AC441E85265A007B340C /* SleepHandler.swift */,
+				669CD54F1E885ABD00A0E9FB /* WorkingClass.swift */,
+				669CD5531E88623F00A0E9FB /* Inactive.swift */,
+				669CD5511E885F6400A0E9FB /* Studying.swift */,
+			);
+			name = "Activity Handlers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +287,12 @@
 				TargetAttributes = {
 					6687A10B1E83057F004554AE = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5Q8G8T8986;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					6687A11A1E830582004554AE = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -223,8 +329,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				668CD4281EB220D60047AAEF /* bgAbout.png in Resources */,
+				6683A4B71EA7B81D003461A8 /* logo v2-t.ico in Resources */,
+				668CD41E1EB1E9850047AAEF /* General.xib in Resources */,
 				6687A1121E830581004554AE /* Assets.xcassets in Resources */,
+				666730BC1E8C42B5003F40C4 /* Pref.xib in Resources */,
+				66795A791E980A86009A0089 /* Upload.xib in Resources */,
+				66EF45711E96AA7300DFFFC7 /* Updates.xib in Resources */,
 				6687A1151E830581004554AE /* MainMenu.xib in Resources */,
+				663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */,
+				668CD4251EB215100047AAEF /* about.xib in Resources */,
+				663FB5EA1EA8BFE500426126 /* LogOut.xib in Resources */,
+				668CD42C1EB240F70047AAEF /* icon.png in Resources */,
+				667C4B391EADFD9B0030257B /* close.png in Resources */,
+				6683A4B51EA7B7F9003461A8 /* collec.png in Resources */,
+				668CD4211EB1F07C0047AAEF /* mbap.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +368,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				669CD5501E885ABD00A0E9FB /* WorkingClass.swift in Sources */,
+				666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */,
+				66D4AC451E85265A007B340C /* SleepHandler.swift in Sources */,
+				6683A4701EA758BA003461A8 /* dataRetro.swift in Sources */,
+				669CD5541E88623F00A0E9FB /* Inactive.swift in Sources */,
+				668CD4241EB215100047AAEF /* about.swift in Sources */,
+				669CD5521E885F6400A0E9FB /* Studying.swift in Sources */,
 				6687A1101E830580004554AE /* AppDelegate.swift in Sources */,
+				66EF456E1E96A81D00DFFFC7 /* ViewController.swift in Sources */,
+				66D4AC471E85AA34007B340C /* userHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,9 +510,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JPS/JPS.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = JPS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -394,9 +524,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JPS/JPS.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = JPS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -471,6 +603,7 @@
 				6687A1311E830583004554AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6687A1321E830583004554AE /* Build configuration list for PBXNativeTarget "JPSTests" */ = {
 			isa = XCConfigurationList;
@@ -479,6 +612,7 @@
 				6687A1341E830583004554AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6687A1351E830583004554AE /* Build configuration list for PBXNativeTarget "JPSUITests" */ = {
 			isa = XCConfigurationList;
@@ -487,6 +621,7 @@
 				6687A1371E830583004554AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
