@@ -16,7 +16,7 @@
             startingLineNumber = "36"
             endingLineNumber = "36"
             landmarkName = "applicationDidFinishLaunching(_:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -32,7 +32,7 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "init(window:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

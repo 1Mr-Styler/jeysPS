@@ -28,7 +28,7 @@ class Pref: NSWindowController {
     let genView = ViewController(nibName: "General", bundle: nil)
     
     var username = "Not Logged In" //To display if user is logged in
-    var loginDate = NSDate()
+    var loginDate = Date()
     
     var unsaved: [dataRetro] = []
     
@@ -39,7 +39,7 @@ class Pref: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        self.resize(.Account)
+        self.resize(.account)
         
         self.mainView.addSubview((genView!.view))
         activeSub = (genView!.view)
@@ -55,8 +55,8 @@ class Pref: NSWindowController {
     
     override init(window: NSWindow!) {
         if uH.isLoggedIn() {
-            self.username = NSUserDefaults.standardUserDefaults().stringForKey("username")!
-            self.loginDate = NSDate.init(timeIntervalSince1970: NSUserDefaults.standardUserDefaults().doubleForKey("loginDate"))
+            self.username = UserDefaults.standard.string(forKey: "username")!
+            self.loginDate = Date.init(timeIntervalSince1970: UserDefaults.standard.double(forKey: "loginDate"))
         }
         
         super.init(window: window)
@@ -68,12 +68,12 @@ class Pref: NSWindowController {
         let keys = uH.arrayOfKeys("") as! [String]
         
         if keys.count > 0 {
-            let OBJ = NSUserDefaults.standardUserDefaults()
+            let OBJ = UserDefaults.standard
             var cObj : [String]
             for i in 0..<keys.count {
-                cObj = OBJ.objectForKey(keys[i]) as! [String]
+                cObj = OBJ.object(forKey: keys[i]) as! [String]
                 unsaved.append(
-                    dataRetro(no: i+1, act: cObj[0], date: NSDate.init(timeIntervalSince1970: Double(cObj[2])!)
+                    dataRetro(no: i+1, act: cObj[0], date: Date.init(timeIntervalSince1970: Double(cObj[2])!)
                     )
                 )
             }
@@ -87,9 +87,9 @@ class Pref: NSWindowController {
         super.init(coder: coder)!;
     }
 
-    @IBAction func accMenu(sender: AnyObject) {
+    @IBAction func accMenu(_ sender: AnyObject) {
         self.mainView.replaceSubview(activeSub, with: loginView.view)
-        self.resize(ResizeGuy.Account)
+        self.resize(ResizeGuy.account)
         activeSub = loginView.view
         
         if !uH.isLoggedIn() {
@@ -97,41 +97,41 @@ class Pref: NSWindowController {
         }
     }
     
-    @IBAction func uploadMenu(sender: AnyObject) {
+    @IBAction func uploadMenu(_ sender: AnyObject) {
         self.mainView.addSubview((uloView?.view)!)
         self.mainView.replaceSubview(activeSub, with: (uloView?.view)!)
-        self.resize(ResizeGuy.Update)
+        self.resize(ResizeGuy.update)
         activeSub = (uloView?.view)!
     }
     
-    @IBAction func updateMenu(sender: AnyObject) {
+    @IBAction func updateMenu(_ sender: AnyObject) {
         self.mainView.addSubview((updView?.view)!)
         self.mainView.replaceSubview(activeSub, with: (updView?.view)!)
-        self.resize(ResizeGuy.Update)
+        self.resize(ResizeGuy.update)
         activeSub = (updView?.view)!
     }
     
-    @IBAction func generalMenu(sender: AnyObject) {
+    @IBAction func generalMenu(_ sender: AnyObject) {
         self.mainView.addSubview((genView?.view)!)
         self.mainView.replaceSubview(activeSub, with: (genView?.view)!)
-        self.resize(ResizeGuy.General)
+        self.resize(ResizeGuy.general)
         activeSub = (genView?.view)!
     }
     
     
-    @IBAction func help(sender: AnyObject) {
+    @IBAction func help(_ sender: AnyObject) {
         label.stringValue = "I said no updates available!"
     }
     
-    @IBAction func retryUpload(sender: AnyObject) {
+    @IBAction func retryUpload(_ sender: AnyObject) {
         
         let keys = uH.arrayOfKeys("") as! [String]
         
         if keys.count > 0 {
-            let OBJ = NSUserDefaults.standardUserDefaults()
+            let OBJ = UserDefaults.standard
             var cObj : [String]
             for i in 0..<keys.count {
-                cObj = OBJ.objectForKey(keys[i]) as! [String]
+                cObj = OBJ.object(forKey: keys[i]) as! [String]
                 var uRL : String
                 
                 switch cObj[0] {
@@ -148,13 +148,13 @@ class Pref: NSWindowController {
                     break
                 }
                 
-                if let url = NSURL(string: uRL) {
+                if let url = URL(string: uRL) {
                     do {
-                        _ = try NSString(contentsOfURL: url, usedEncoding: nil)
-                        OBJ.removeObjectForKey(keys[i])
+                        _ = try NSString(contentsOf: url, usedEncoding: nil)
+                        OBJ.removeObject(forKey: keys[i])
                         
-                        userHandler.createAlert("Successfully Uploaded", txt: "Activity: \(cObj[0]) at \(NSDate.init(timeIntervalSince1970: Double(cObj[2])!))")
-                        uH.arrayOfKeys("popKorn \(keys[i])")
+                        userHandler.createAlert("Successfully Uploaded", txt: "Activity: \(cObj[0]) at \(Date.init(timeIntervalSince1970: Double(cObj[2])!))")
+                        _ = uH.arrayOfKeys("popKorn \(keys[i])")
                     } catch {
                         // contents could not be loaded
                        
@@ -169,91 +169,91 @@ class Pref: NSWindowController {
     @IBOutlet weak var userName: NSTextField!
     @IBOutlet weak var passWord: NSSecureTextField!
     
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         
         if userName.stringValue.isEmpty || passWord.stringValue.isEmpty {
             let alert = NSAlert()
             alert.messageText = "Both fields are required!"
-            alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
+            alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
             
         } else {
             let tryLogin = uH.login(userName.stringValue, pass: passWord.stringValue)
             let alert = NSAlert()
             
             switch tryLogin {
-            case .LoggedIn:
+            case .loggedIn:
 //                self.loggedInAs.stringValue = userName.stringValue
                 self.window!.endSheet(sender.window)
                 sender.window.orderOut(self.window!)
-            case .ServerUnreachable:
+            case .serverUnreachable:
                 alert.messageText = "Server Unreachable. Check your internet connection and try again."
-                alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
-            case .Incorrect:
+                alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
+            case .incorrect:
                 alert.messageText = "Incorrect Login. Check your login details and try again."
-                alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
+                alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
             }
         }
     }
     
-    @IBAction func createAccount(sender: AnyObject) {
+    @IBAction func createAccount(_ sender: AnyObject) {
         if userName.stringValue.isEmpty || passWord.stringValue.isEmpty {
             let alert = NSAlert()
             alert.messageText = "Both fields are required!"
-            alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
+            alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
         } else {
             let tryLogin = uH.createAccount(userName.stringValue, pass: passWord.stringValue)
             let alert = NSAlert()
             
             switch tryLogin {
-            case .LoggedIn:
+            case .loggedIn:
 //                self.loggedInAs.stringValue = userName.stringValue
                 self.window!.endSheet(sender.window)
                 sender.window.orderOut(self.window!)
-            case .ServerUnreachable:
+            case .serverUnreachable:
                 alert.messageText = "Server Unreachable. Check your internet connection and try again."
-                alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
-            case .Incorrect:
+                alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
+            case .incorrect:
                 alert.messageText = "Incorrect Login. Check your login details and try again."
-                alert.beginSheetModalForWindow((sender.superview!!.window!), completionHandler: nil)
+                alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
             }
         }
     }
     
-    @IBAction func closePref(sender: AnyObject) {
+    @IBAction func closePref(_ sender: AnyObject) {
         self.window!.endSheet(sender.window)
         sender.window.orderOut(self.window!)
     }
     
-    @IBAction func logOut(sender: AnyObject) {
+    @IBAction func logOut(_ sender: AnyObject) {
         if uH.isLoggedIn() {
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("loginDate")
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("username")
-            NSUserDefaults.standardUserDefaults().removeObjectForKey("cdc")
+            UserDefaults.standard.removeObject(forKey: "loginDate")
+            UserDefaults.standard.removeObject(forKey: "username")
+            UserDefaults.standard.removeObject(forKey: "cdc")
             
             
         }
     }
     
     
-    func resize(who: ResizeGuy) {
+    func resize(_ who: ResizeGuy) {
         let windowFrame = window!.frame
         let oldWidth = windowFrame.size.width
         
         var toAdd : CGFloat
         
         switch who {
-        case .Account:
+        case .account:
             toAdd = CGFloat(272.0)
-        case .Update:
+        case .update:
             toAdd = CGFloat(416.0)
-        case .Upload:
+        case .upload:
             toAdd = CGFloat(416.0)
-        case .General:
+        case .general:
             toAdd = CGFloat(272.0)
         }
         
         let contentRect = NSRect(x: 0, y: 0, width: oldWidth, height: toAdd)
-        let contentFrame = mainView.window!.frameRectForContentRect(contentRect)
+        let contentFrame = mainView.window!.frameRect(forContentRect: contentRect)
         let toolbarHeight = windowFrame.size.height - contentFrame.size.height
         let newOrigin = NSPoint(x: windowFrame.origin.x, y: windowFrame.origin.y + toolbarHeight)
         let newFrame = NSRect(origin: newOrigin, size: contentFrame.size)
@@ -262,14 +262,14 @@ class Pref: NSWindowController {
 }
 
 enum LoginGuy {
-    case LoggedIn
-    case Incorrect
-    case ServerUnreachable
+    case loggedIn
+    case incorrect
+    case serverUnreachable
 }
 
 enum ResizeGuy {
-    case Account
-    case Upload
-    case Update
-    case General
+    case account
+    case upload
+    case update
+    case general
 }

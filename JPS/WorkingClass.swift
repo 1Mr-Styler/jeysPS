@@ -9,8 +9,8 @@
 import Cocoa
 
 class WorkingClass: NSObject {
-    var timer = NSTimer()
-    var startTime = NSTimeInterval()
+    var timer = Timer()
+    var startTime = TimeInterval()
     var isActive = false
     var StartedAt : Int = 0
     var StopAt : Int = 0
@@ -22,7 +22,7 @@ class WorkingClass: NSObject {
     @IBOutlet weak var displayTimeLabel: NSTextField!
     @IBOutlet weak var lA: NSTextField!
     
-    @IBAction func toggleWork(sender: AnyObject) {
+    @IBAction func toggleWork(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
             userHandler.activeClass = "WorkingClass"
         }
@@ -40,27 +40,27 @@ class WorkingClass: NSObject {
     
     func updateTime() {
         
-        let currentTime = NSDate.timeIntervalSinceReferenceDate()
+        let currentTime = Date.timeIntervalSinceReferenceDate
         
         //Find the difference between current time and start time.
         
-        var elapsedTime: NSTimeInterval = currentTime - startTime
+        var elapsedTime: TimeInterval = currentTime - startTime
         
         //calculate the hours in elapsed time.
         let hours = UInt8(elapsedTime / 3600.0)
         
-        elapsedTime -= (NSTimeInterval(hours) * 3600)
+        elapsedTime -= (TimeInterval(hours) * 3600)
         
         //calculate the minutes in elapsed time.
         let minutes = UInt8(elapsedTime / 60.0)
         
-        elapsedTime -= (NSTimeInterval(minutes) * 60)
+        elapsedTime -= (TimeInterval(minutes) * 60)
         
         //calculate the seconds in elapsed time.
         
         let seconds = UInt8(elapsedTime)
         
-        elapsedTime -= NSTimeInterval(seconds)
+        elapsedTime -= TimeInterval(seconds)
         
         //find out the fraction of milliseconds to be displayed.
         
@@ -79,10 +79,10 @@ class WorkingClass: NSObject {
     }
     
     func updateData() {
-        if let url = NSURL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0") {
+        if let url = URL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0") {
             do {
-                contents = try NSString(contentsOfURL: url, usedEncoding: nil)
-                lA.objectValue = NSDate()
+                contents = try NSString(contentsOf: url, usedEncoding: nil)
+                lA.objectValue = Date()
                 Ran = 0
                 print(contents)
             } catch {
@@ -99,7 +99,7 @@ class WorkingClass: NSObject {
     
     func stop() {
         userHandler.activeClass = ""
-        StopAt = Int(NSDate().timeIntervalSince1970)
+        StopAt = Int(Date().timeIntervalSince1970)
         timer.invalidate()
         isActive = false
         Ran = StopAt - StartedAt
@@ -108,14 +108,14 @@ class WorkingClass: NSObject {
     }
     
     func isAlmost12() {
-        let form = NSDateFormatter()
+        let form = DateFormatter()
         
-        form.timeStyle = .MediumStyle
-        form.dateStyle = .NoStyle
+        form.timeStyle = .medium
+        form.dateStyle = .none
         
-        let l = NSDate.init(timeIntervalSince1970: NSDate().timeIntervalSince1970)
+        let l = Date.init(timeIntervalSince1970: Date().timeIntervalSince1970)
         
-        let theTimeIs = form.stringFromDate(l) //"12:49:17 AM"
+        let theTimeIs = form.string(from: l) //"12:49:17 AM"
         
         if theTimeIs == "11:59:55 PM" {
             //Cuz its almost a new day, stop current activity and start new one
@@ -127,9 +127,9 @@ class WorkingClass: NSObject {
     
     func start() {
         let aSelector : Selector = #selector(SleepHandler.updateTime)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: aSelector, userInfo: nil, repeats: true)
-        startTime = NSDate.timeIntervalSinceReferenceDate()
-        StartedAt = Int(NSDate().timeIntervalSince1970)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = Date.timeIntervalSinceReferenceDate
+        StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
     }
 

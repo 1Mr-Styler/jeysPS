@@ -17,19 +17,19 @@ class ViewController: NSViewController {
         // Do view setup here.
         
         if self.nibName == "General" {
-            enableMenu.state = NSUserDefaults.standardUserDefaults().integerForKey("showMB")
+            enableMenu.state = UserDefaults.standard.integer(forKey: "showMB")
         }
     }
     
-    @IBAction func enableMenuBar(sender: AnyObject) {
-        let appDeli = NSApplication.sharedApplication().delegate as! AppDelegate
+    @IBAction func enableMenuBar(_ sender: AnyObject) {
+        let appDeli = NSApplication.shared().delegate as! AppDelegate
         
         if enableMenu.state == NSOnState {
             appDeli.MenuBar()
-            NSUserDefaults.standardUserDefaults().setObject(1, forKey: "showMB")
+            UserDefaults.standard.set(1, forKey: "showMB")
         } else {
             appDeli.MenuBarRemove()
-            NSUserDefaults.standardUserDefaults().setObject(0, forKey: "showMB")
+            UserDefaults.standard.set(0, forKey: "showMB")
         }
     }
     

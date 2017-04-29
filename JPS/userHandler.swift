@@ -11,7 +11,7 @@ import Cocoa
 class userHandler: NSObject {
     class var cdc : String {
         get {
-            if let bl3 =  NSUserDefaults.standardUserDefaults().stringForKey("cdc") {
+            if let bl3 =  UserDefaults.standard.string(forKey: "cdc") {
                 return bl3
             } else {
                 return ""
@@ -20,7 +20,7 @@ class userHandler: NSObject {
     }
     
     var hasMenuBar : Bool {
-        let hmb = NSUserDefaults.standardUserDefaults().integerForKey("showMB")
+        let hmb = UserDefaults.standard.integer(forKey: "showMB")
         if hmb == 1 {
             return true
         } else {
@@ -33,11 +33,11 @@ class userHandler: NSObject {
     
     @IBOutlet weak var window: NSWindow!
     
-    class func createAlert(title : String, txt: String){
+    class func createAlert(_ title : String, txt: String){
         let alert : NSAlert = NSAlert()
         alert.messageText = title
         alert.informativeText = txt
-        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+        alert.alertStyle = NSAlertStyle.warning
         
         alert.runModal()
     }
@@ -46,10 +46,10 @@ class userHandler: NSObject {
     @IBOutlet weak var ach: NSTextField!
     var contents: NSString = ""
     
-    @IBAction func setAchi(sender: AnyObject) {
-        if let url = NSURL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=0&ach=\(ach.stringValue)") {
+    @IBAction func setAchi(_ sender: AnyObject) {
+        if let url = URL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=0&ach=\(ach.stringValue)") {
             do {
-                contents = try NSString(contentsOfURL: url, usedEncoding: nil)
+                contents = try NSString(contentsOf: url, usedEncoding: nil)
                 print(contents)
             } catch {
                 // contents could not be loaded
@@ -60,35 +60,35 @@ class userHandler: NSObject {
         }
     }
     
-    func couldntUpload(sav : Savings) {
-        NSUserDefaults.standardUserDefaults().setObject([sav.activity, sav.lenght, sav.start], forKey: self.arrayOfKeys("add") as! String)
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func couldntUpload(_ sav : Savings) {
+        UserDefaults.standard.set([sav.activity, sav.lenght, sav.start], forKey: self.arrayOfKeys("add") as! String)
+        UserDefaults.standard.synchronize()
         
         print(self.arrayOfKeys(""))
     }
     
-    func arrayOfKeys(key: String) -> AnyObject {
-        let OBJ = NSUserDefaults.standardUserDefaults()
-        var keys = OBJ.objectForKey("keys") as? [String]
+    func arrayOfKeys(_ key: String) -> AnyObject {
+        let OBJ = UserDefaults.standard
+        var keys = OBJ.object(forKey: "keys") as? [String]
         
         if key.isEmpty {
             if keys == nil {
-                return []
+                return [] as AnyObject
             } else {
-                return keys! //[Blessed0,Blessed1,Blessed2,...]
+                return keys! as AnyObject //[Blessed0,Blessed1,Blessed2,...]
             }
             
         } else {
             var keyname: String
             
-            if key.containsString("popKorn") {
+            if key.contains("popKorn") {//Delete entry
                 print("popkorn")
                 
-                keyname = key.componentsSeparatedByString(" ")[1]
+                keyname = key.components(separatedBy: " ")[1]
                 
                 if keys != nil {
-                    if let i = keys?.indexOf(keyname) {
-                        keys?.removeAtIndex(i)
+                    if let i = keys?.index(of: keyname) {
+                        keys?.remove(at: i)
                     }
                 }
             } else {
@@ -107,70 +107,70 @@ class userHandler: NSObject {
                     keys!.append(keyname)
                 }
             }
-            OBJ.setObject(keys, forKey: "keys")
+            OBJ.set(keys, forKey: "keys")
             OBJ.synchronize()
         
-            return keyname
+            return keyname as AnyObject
         }
     }
     
     func isLoggedIn() -> Bool {
-        let OBJ = NSUserDefaults.standardUserDefaults()
+        let OBJ = UserDefaults.standard
         
-        if OBJ.stringForKey("cdc") != nil {
+        if OBJ.string(forKey: "cdc") != nil {
             return true
         }
         return false
     }
     
-    func login(user: String, pass: String) -> LoginGuy {
+    func login(_ user: String, pass: String) -> LoginGuy {
         
         let uRL = "http://localhost/jenny/apr.php?login=\(user)&pas=\(pass)"
-        let OBJ = NSUserDefaults.standardUserDefaults()
+        let OBJ = UserDefaults.standard
 
-        if let url = NSURL(string: uRL) {
+        if let url = URL(string: uRL) {
             do {
-                let res = try NSString(contentsOfURL: url, usedEncoding: nil)
+                let res = try NSString(contentsOf: url, usedEncoding: nil)
                 print(res)
                 if res == "invalid" {
-                    return LoginGuy.Incorrect
+                    return LoginGuy.incorrect
                 }
-                OBJ.setObject(res as String, forKey: "cdc")
-                OBJ.setObject(NSDate().timeIntervalSince1970, forKey: "loginDate")
-                OBJ.setObject(user, forKey: "username")
+                OBJ.set(res as String, forKey: "cdc")
+                OBJ.set(Date().timeIntervalSince1970, forKey: "loginDate")
+                OBJ.set(user, forKey: "username")
                 
-                return LoginGuy.LoggedIn
+                return LoginGuy.loggedIn
             } catch {
                 // contents could not be loaded
-                return LoginGuy.ServerUnreachable
+                return LoginGuy.serverUnreachable
             }
         } else {
-            return LoginGuy.ServerUnreachable
+            return LoginGuy.serverUnreachable
         }
     }
     
-    func createAccount(user: String, pass: String) -> LoginGuy {
+    func createAccount(_ user: String, pass: String) -> LoginGuy {
         let uRL = "http://localhost/jenny/apr.php?login=\(user)&pass=\(pass)"
-        let OBJ = NSUserDefaults.standardUserDefaults()
+        let OBJ = UserDefaults.standard
         
-        if let url = NSURL(string: uRL) {
+        if let url = URL(string: uRL) {
             do {
-                let res = try NSString(contentsOfURL: url, usedEncoding: nil)
+                let res = try NSString(contentsOf: url, usedEncoding: nil)
                 print(res)
                 if res == "error" {
-                    return LoginGuy.ServerUnreachable
+                    return LoginGuy.serverUnreachable
                 }
-                OBJ.setObject(res as String, forKey: "cdc")
-                OBJ.setObject(NSDate().timeIntervalSince1970, forKey: "loginDate")
-                OBJ.setObject(user, forKey: "username")
+                OBJ.set(res as String, forKey: "cdc")
+                OBJ.set(Date().timeIntervalSince1970, forKey: "loginDate")
+                OBJ.set(user, forKey: "username")
                 
-                return LoginGuy.LoggedIn
+                return LoginGuy.loggedIn
             } catch {
                 // contents could not be loaded
-                return LoginGuy.ServerUnreachable
+                return LoginGuy.serverUnreachable
             }
         } else {
-            return LoginGuy.ServerUnreachable
+            return LoginGuy.serverUnreachable
         }
     }
 }
