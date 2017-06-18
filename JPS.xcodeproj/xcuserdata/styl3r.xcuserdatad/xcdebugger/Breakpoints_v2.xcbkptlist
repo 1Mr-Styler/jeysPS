@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JPS/AppDelegate.swift"
-            timestampString = "515003922.341003"
+            timestampString = "517936309.534102"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "applicationDidFinishLaunching(_:)"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "applicationWillTerminate(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -32,6 +32,22 @@
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "init(window:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "JPS/AppDelegate.swift"
+            timestampString = "517936309.534102"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "toggleApp(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -1,0 +1,24 @@
+{
+  "App": "JPS",
+  "version": "0.5",
+  "verhist": {
+    "0_1": [
+      "3/23/17"
+    ],
+    "0_5": [
+      "6/7/17",
+      "Added Quit Button to MenuBar",
+      "Fixed SplitView Issue"
+    ]
+  },
+  "used_in": {
+    "": ""
+  },
+  "uses": {
+    "Rose": "/var"
+  },
+  "future": {
+    "status": "desc"
+  },
+  "last_upd": "6/7/17 7:59 PM"
+}

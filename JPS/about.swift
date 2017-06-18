@@ -31,7 +31,7 @@ class about: NSWindowController {
     }
     
     @IBAction func openLYS(_ sender: AnyObject) {
-        if let url = URL(string: "http://www.lyshnia.com") {
+        if let url = URL(string: "https://lyshnia.com") {
             NSWorkspace.shared().open(url)
         }
     }

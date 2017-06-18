@@ -19,6 +19,9 @@ class ViewController: NSViewController {
         if self.nibName == "General" {
             enableMenu.state = UserDefaults.standard.integer(forKey: "showMB")
         }
+        
+        if self.nibName == "Working" {
+        }
     }
     
     @IBAction func enableMenuBar(_ sender: AnyObject) {

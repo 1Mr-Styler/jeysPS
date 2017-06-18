@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AcViewCon" customModule="JPS" customModuleProvider="target">
+            <connections>
+                <outlet property="ActBar" destination="mHO-kJ-pce" id="UWw-7N-fOy"/>
+                <outlet property="btnHlght" destination="3dW-4U-7NO" id="bmc-SE-ONb"/>
+                <outlet property="view" destination="c22-O7-iKe" id="rmG-nM-TO3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView wantsLayer="YES" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="552" height="360"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mHO-kJ-pce">
+                    <rect key="frame" x="480" y="0.0" width="72" height="360"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <customView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dW-4U-7NO">
+                            <rect key="frame" x="-7" y="0.0" width="86" height="58"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </customView>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZdA-Dm-DYd">
+                            <rect key="frame" x="12" y="279" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="sleep" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="OCo-4h-W0c">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="sleep:" target="-2" id="3HR-Oz-TAf"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aqr-d2-wdL">
+                            <rect key="frame" x="12" y="211" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="work" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="ETI-Iz-Sd9">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="work:" target="-2" id="DQk-Oz-m2y"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JTA-Ld-HFZ">
+                            <rect key="frame" x="12" y="143" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="inactive" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="d2d-vH-YON">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="inactive:" target="-2" id="ROT-YB-cfa"/>
+                            </connections>
+                        </button>
+                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Kq-gl-vrg">
+                            <rect key="frame" x="12" y="75" width="48" height="48"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="study" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="eGN-FH-jx4">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="study:" target="-2" id="XZb-AB-tyL"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </customView>
+            </subviews>
+        </customView>
+    </objects>
+    <resources>
+        <image name="inactive" width="127" height="90"/>
+        <image name="sleep" width="200" height="200"/>
+        <image name="study" width="101" height="104"/>
+        <image name="work" width="200" height="200"/>
+    </resources>
+</document>
