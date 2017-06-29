@@ -20,7 +20,16 @@ class ViewController: NSViewController {
             enableMenu.state = UserDefaults.standard.integer(forKey: "showMB")
         }
         
-        if self.nibName == "Working" {
+        let activityNibs: [String] = ["Working", "Inactive", "Sleeping", "Studying"]
+        
+        if activityNibs.contains(self.nibName!) {
+            let vi = self.view.subviews[0]
+            
+            vi.layer?.backgroundColor = NSColor.white.cgColor
+            vi.shadow = NSShadow()
+            vi.layer?.shadowOpacity = 0.3
+            vi.layer?.shadowRadius = 1.0
+            vi.layer?.shadowOffset = CGSize(width: 4.0, height: -4.0)
         }
     }
     

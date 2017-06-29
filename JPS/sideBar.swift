@@ -32,17 +32,9 @@ class sideBar: NSViewController {
     @IBAction func toog(_ sender: Any) {
         print("QS: ", QuickLook.state )
         if QuickLook.state == NSOnState {
-            detailView?.showActivities(AcViewCon())
-            
-//            switchView = switchView == nil ? NSSplitViewItem.init(viewController: AcViewCon()) : switchView
-            
-//            parentSplit?.addSplitViewItem(switchView!)
+            detailView?.showActivities(nil, restore: true)
         } else {
             detailView?.showActivities()
-//            if switchView != nil {
-//                //TODO: Figure out how this method works
-//                parentSplit?.removeSplitViewItem(switchView!)
-//            }
         }
     }
     

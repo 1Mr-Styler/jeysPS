@@ -17,14 +17,20 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VR2-4Y-edw">
-                    <rect key="frame" x="184" y="288" width="104" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Activity: Inactive" id="xf3-hq-gP8">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="NDh-Sk-scs">
+                    <rect key="frame" x="0.0" y="321" width="480" height="39"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkd-Sg-5cL">
+                            <rect key="frame" x="192" y="3" width="96" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Inactive" id="EBo-Qw-HuY">
+                                <font key="font" size="25" name=".AppleSystemUIFont"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQV-7T-vBZ">
                     <rect key="frame" x="15" y="17" width="109" height="17"/>
                     <constraints>
@@ -49,14 +55,17 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N7H-39-Mf1">
-                    <rect key="frame" x="171" y="315" width="129" height="32"/>
+                    <rect key="frame" x="176" y="122" width="129" height="32"/>
                     <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KCk-gd-Wre">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="toggleInactivity:" target="w4u-pq-3ki" id="sqO-8m-VJd"/>
+                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Cb-l5-Gew">
-                    <rect key="frame" x="150" y="236" width="171" height="44"/>
+                    <rect key="frame" x="154" y="158" width="171" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="167" id="Umo-Dl-5Tj"/>
                     </constraints>
@@ -68,17 +77,25 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="N7H-39-Mf1" firstAttribute="top" secondItem="ykt-iG-n0D" secondAttribute="top" constant="17" id="1jH-6U-xFB"/>
+                <constraint firstItem="N7H-39-Mf1" firstAttribute="top" secondItem="ykt-iG-n0D" secondAttribute="top" constant="210" id="1jH-6U-xFB"/>
                 <constraint firstItem="ujf-4N-v6T" firstAttribute="leading" secondItem="ykt-iG-n0D" secondAttribute="leading" constant="114" id="6KG-Or-8hd"/>
-                <constraint firstItem="VR2-4Y-edw" firstAttribute="top" secondItem="N7H-39-Mf1" secondAttribute="bottom" constant="17" id="7kv-J6-zM6"/>
+                <constraint firstAttribute="bottom" secondItem="NDh-Sk-scs" secondAttribute="bottom" constant="321" id="8CP-ac-8Mu"/>
                 <constraint firstItem="bQV-7T-vBZ" firstAttribute="leading" secondItem="ykt-iG-n0D" secondAttribute="leading" constant="17" id="Cq9-Dr-Rxn"/>
-                <constraint firstItem="7Cb-l5-Gew" firstAttribute="top" secondItem="VR2-4Y-edw" secondAttribute="bottom" constant="8" symbolic="YES" id="ELt-E9-FPN"/>
+                <constraint firstItem="7Cb-l5-Gew" firstAttribute="centerX" secondItem="N7H-39-Mf1" secondAttribute="centerX" constant="-1" id="K0H-c6-bsf"/>
                 <constraint firstItem="bQV-7T-vBZ" firstAttribute="baseline" secondItem="ujf-4N-v6T" secondAttribute="baseline" id="Lpy-Dp-e6X"/>
                 <constraint firstAttribute="bottom" secondItem="bQV-7T-vBZ" secondAttribute="bottom" constant="17" id="OKv-gL-Agu"/>
-                <constraint firstItem="N7H-39-Mf1" firstAttribute="centerX" secondItem="VR2-4Y-edw" secondAttribute="centerX" id="OhN-Tv-A9I"/>
-                <constraint firstItem="VR2-4Y-edw" firstAttribute="centerX" secondItem="7Cb-l5-Gew" secondAttribute="centerX" id="ifA-NU-ZIs"/>
-                <constraint firstItem="N7H-39-Mf1" firstAttribute="centerX" secondItem="ykt-iG-n0D" secondAttribute="centerX" constant="-5" id="zdP-Vi-i0J"/>
+                <constraint firstItem="NDh-Sk-scs" firstAttribute="leading" secondItem="ykt-iG-n0D" secondAttribute="leading" id="amB-2T-ExN"/>
+                <constraint firstItem="7Cb-l5-Gew" firstAttribute="centerX" secondItem="NDh-Sk-scs" secondAttribute="centerX" constant="-0.5" id="iNa-tW-ERc"/>
+                <constraint firstItem="NDh-Sk-scs" firstAttribute="top" secondItem="ykt-iG-n0D" secondAttribute="top" id="s9T-Rv-XMJ"/>
+                <constraint firstItem="N7H-39-Mf1" firstAttribute="top" secondItem="7Cb-l5-Gew" secondAttribute="bottom" constant="8" symbolic="YES" id="wxt-Y8-XwT"/>
+                <constraint firstItem="N7H-39-Mf1" firstAttribute="centerX" secondItem="ykt-iG-n0D" secondAttribute="centerX" constant="0.5" id="zdP-Vi-i0J"/>
             </constraints>
         </view>
+        <customObject id="w4u-pq-3ki" customClass="Inactive" customModule="JPS" customModuleProvider="target">
+            <connections>
+                <outlet property="displayTimeLabel" destination="7Cb-l5-Gew" id="vzq-JA-6K3"/>
+                <outlet property="lA" destination="ujf-4N-v6T" id="WAH-n1-V9c"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

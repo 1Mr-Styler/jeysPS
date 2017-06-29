@@ -22,23 +22,21 @@ class AcViewCon: NSViewController {
         //Color Actbar
         self.ActBar.layer?.backgroundColor = NSColor(red: 225.0/255.0, green: 222.0/255.0, blue: 211.0/255.0, alpha: 1.0).cgColor
         
-        self.btnHlght.layer?.backgroundColor = NSColor.white.cgColor//NSColor.init(red: 0.941, green: 0.973, blue: 1.0, alpha: 1).cgColor
-        
+        self.btnHlght.layer?.backgroundColor = NSColor.white.cgColor
         self.btnHlght.shadow = NSShadow()
         self.btnHlght.layer?.shadowOpacity = 0.5
         self.btnHlght.layer?.shadowRadius = 3.0
         self.btnHlght.layer?.shadowOffset = CGSize(width: 0.0, height: 3.0)
         self.hgBtnTo()
         
-//        self.ActBar.addSubview(self.btnHlght, positioned: .below, relativeTo: self.ActBar.subviews[0])
-        
         AcViewCon.currVC = Activity.working.getView()
-        AcViewCon.currVC?.view.layer?.backgroundColor = NSColor.white.cgColor// NSColor.init(red: CGFloat(0.941), green: CGFloat(0.973), blue: CGFloat(1.0), alpha: CGFloat(1)).cgColor
+        AcViewCon.currVC?.view.layer?.backgroundColor = NSColor.white.cgColor
         AcViewCon.currVC?.view.shadow = NSShadow()
         AcViewCon.currVC?.view.layer?.shadowOpacity = 0.1
         AcViewCon.currVC?.view.layer?.shadowRadius = 1.0
         AcViewCon.currVC?.view.layer?.shadowOffset = CGSize(width: 4.0, height: 10.0)
-        self.view.addSubview((AcViewCon.currVC?.view)!)//, positioned: .below, relativeTo: self.ActBar)
+        self.view.addSubview((AcViewCon.currVC?.view)!)
+        self.loadVC(vc: Activity.working.getView(), activity: "work")
         
     }
     
@@ -46,38 +44,49 @@ class AcViewCon: NSViewController {
         self.init(nibName: "Activity", bundle: nil)!
     }
     
-    func loadVC(vc: ViewController) {
+    static var loadedVCs = [String: ViewController]()
+    
+    func loadVC(vc: ViewController, activity: String) {
         
-        vc.view.layer?.backgroundColor = NSColor.white.cgColor//init(red: CGFloat(0.941), green: CGFloat(0.973), blue: CGFloat(1.0), alpha: CGFloat(1)).cgColor
-        vc.view.shadow = NSShadow()
-        vc.view.layer?.shadowOpacity = 0.1
-        vc.view.layer?.shadowRadius = 1.0
-        vc.view.layer?.shadowOffset = CGSize(width: 4.0, height: 10.0)
-        
-        self.view.addSubview(vc.view)
-        self.view.replaceSubview((AcViewCon.currVC?.view)!, with: vc.view)
-        AcViewCon.currVC = vc
-        self.view.needsDisplay = true
+        if AcViewCon.loadedVCs.keys.contains(activity) {
+            let vc = AcViewCon.loadedVCs[activity]
+            self.view.addSubview((vc?.view)!)
+            self.view.replaceSubview((AcViewCon.currVC?.view)!, with: (vc?.view)!)
+            AcViewCon.currVC = vc
+            self.view.needsDisplay = true
+        } else {
+            vc.view.layer?.backgroundColor = NSColor(red: 236.0/255.0, green: 247.0/255.0, blue: 253.0/255.0, alpha: 1.0).cgColor//init(red: CGFloat(0.941), green: CGFloat(0.973), blue: CGFloat(1.0), alpha: CGFloat(1)).cgColor
+            vc.view.shadow = NSShadow()
+            vc.view.layer?.shadowOpacity = 0.1
+            vc.view.layer?.shadowRadius = 1.0
+            vc.view.layer?.shadowOffset = CGSize(width: 4.0, height: 10.0)
+            
+            self.view.addSubview(vc.view)
+            self.view.replaceSubview((AcViewCon.currVC?.view)!, with: vc.view)
+            AcViewCon.currVC = vc
+            self.view.needsDisplay = true
+            
+            AcViewCon.loadedVCs[activity] = vc        }
     }
     
     @IBAction func sleep(_ sender: Any) {
         self.hgBtnTo(-3, y: 273)
-        self.loadVC(vc: Activity.sleeping.getView())
+        self.loadVC(vc: Activity.sleeping.getView(), activity: "sleep")
     }
     
     @IBAction func work(_ sender: Any) {
         self.hgBtnTo()
-        self.loadVC(vc: Activity.working.getView())
+        self.loadVC(vc: Activity.working.getView(), activity: "work")
     }
     
     @IBAction func inactive(_ sender: Any) {
         self.hgBtnTo(-3, y: 143)
-        self.loadVC(vc: Activity.inactive.getView())
+        self.loadVC(vc: Activity.inactive.getView(), activity: "inactive")
     }
     
     @IBAction func study(_ sender: Any) {
         self.hgBtnTo(-3, y: 75)
-        self.loadVC(vc: Activity.studying.getView())
+        self.loadVC(vc: Activity.studying.getView(), activity: "study")
     }
     
     func getBGView() -> NSView {
@@ -92,7 +101,7 @@ class AcViewCon: NSViewController {
             context.duration = 0.1
             self.btnHlght.animator().frame = newSize
         }, completionHandler: {
-            Swift.print("completed")
+//            Swift.print("completed")
         })
 
     }

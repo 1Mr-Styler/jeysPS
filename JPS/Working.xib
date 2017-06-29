@@ -17,6 +17,20 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="s51-Vm-PMU">
+                    <rect key="frame" x="0.0" y="321" width="480" height="39"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-hN-apA">
+                            <rect key="frame" x="192" y="3" width="96" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="bBl-7h-d2Q">
+                                <font key="font" size="25" name=".AppleSystemUIFont"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHc-U8-Xyy">
                     <rect key="frame" x="15" y="17" width="109" height="17"/>
                     <constraints>
@@ -40,30 +54,18 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nU7-oa-bHL">
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nU7-oa-bHL">
                     <rect key="frame" x="176" y="122" width="129" height="32"/>
                     <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nu3-O9-0um">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="toggleWork:" target="XLW-rh-4nh" id="3s9-Hr-maC"/>
+                    </connections>
                 </button>
-                <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="withinWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="erQ-yg-7ZE">
-                    <rect key="frame" x="0.0" y="321" width="480" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxi-hN-apA">
-                            <rect key="frame" x="192" y="0.0" width="96" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="bBl-7h-d2Q">
-                                <font key="font" size="25" name=".AppleSystemUIFont"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </visualEffectView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFS-Nu-E8O">
-                    <rect key="frame" x="154" y="158" width="172" height="44"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFS-Nu-E8O">
+                    <rect key="frame" x="154" y="158" width="171" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="167" id="J0L-85-shF"/>
                     </constraints>
@@ -75,12 +77,25 @@
                 </textField>
             </subviews>
             <constraints>
+                <constraint firstItem="s51-Vm-PMU" firstAttribute="centerX" secondItem="QFS-Nu-E8O" secondAttribute="centerX" id="2nk-Bj-kFn"/>
                 <constraint firstItem="1WM-6g-VG1" firstAttribute="leading" secondItem="7fB-2X-P4l" secondAttribute="leading" constant="114" id="2x5-as-dcj"/>
+                <constraint firstItem="1WM-6g-VG1" firstAttribute="top" secondItem="nU7-oa-bHL" secondAttribute="bottom" constant="95" id="4U3-et-IKc"/>
                 <constraint firstItem="cHc-U8-Xyy" firstAttribute="leading" secondItem="7fB-2X-P4l" secondAttribute="leading" constant="17" id="5Xy-9l-xaG"/>
+                <constraint firstItem="nU7-oa-bHL" firstAttribute="top" secondItem="QFS-Nu-E8O" secondAttribute="bottom" constant="8" symbolic="YES" id="DBd-ul-2AH"/>
+                <constraint firstItem="s51-Vm-PMU" firstAttribute="leading" secondItem="7fB-2X-P4l" secondAttribute="leading" id="Fs4-1g-4vJ"/>
+                <constraint firstAttribute="bottom" secondItem="s51-Vm-PMU" secondAttribute="bottom" constant="321" id="HcF-ly-MIq"/>
+                <constraint firstItem="nU7-oa-bHL" firstAttribute="centerX" secondItem="s51-Vm-PMU" secondAttribute="centerX" id="Ixr-bF-Vg5"/>
                 <constraint firstItem="nU7-oa-bHL" firstAttribute="centerX" secondItem="7fB-2X-P4l" secondAttribute="centerX" id="Mwa-cM-rJS"/>
                 <constraint firstItem="cHc-U8-Xyy" firstAttribute="baseline" secondItem="1WM-6g-VG1" secondAttribute="baseline" id="YHn-j2-Qrp"/>
                 <constraint firstAttribute="bottom" secondItem="cHc-U8-Xyy" secondAttribute="bottom" constant="17" id="dOh-gC-emk"/>
+                <constraint firstItem="s51-Vm-PMU" firstAttribute="top" secondItem="7fB-2X-P4l" secondAttribute="top" id="nIE-8Q-1if"/>
             </constraints>
         </view>
+        <customObject id="XLW-rh-4nh" customClass="WorkingClass" customModule="JPS" customModuleProvider="target">
+            <connections>
+                <outlet property="displayTimeLabel" destination="QFS-Nu-E8O" id="inq-WI-Fqz"/>
+                <outlet property="lA" destination="1WM-6g-VG1" id="rPa-Hh-rEO"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

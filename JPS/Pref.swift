@@ -123,6 +123,7 @@ class Pref: NSWindowController {
         label.stringValue = "I said no updates available!"
     }
     
+    //TODO: Make this method send WYD too
     @IBAction func retryUpload(_ sender: AnyObject) {
         
         let keys = uH.arrayOfKeys("") as! [String]

@@ -39,7 +39,7 @@ class JVc: NSViewController {
         self.view.addSubview((activeViewCon?.view)!)
     }
     
-    func showActivities(_ withVC: NSViewController? = nil) {
+    func showActivities(_ withVC: NSViewController? = nil, restore: Bool = false) {
         
         guard withVC != nil else {
             if (asSplitGuy?.isCollapsed)! {

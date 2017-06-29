@@ -15,6 +15,7 @@
 		663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */; };
 		6654E4C81EF65452003608E9 /* inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C71EF65452003608E9 /* inactive.png */; };
 		6654E4CA1EF657F4003608E9 /* study.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C91EF657F4003608E9 /* study.png */; };
+		6654E4CE1EF6E10D003608E9 /* sl_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */; };
 		666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666730B91E8C42B5003F40C4 /* Pref.swift */; };
 		666730BC1E8C42B5003F40C4 /* Pref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666730BA1E8C42B5003F40C4 /* Pref.xib */; };
 		66795A791E980A86009A0089 /* Upload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66795A781E980A86009A0089 /* Upload.xib */; };
@@ -86,6 +87,7 @@
 		663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit-button-icon-18.png"; sourceTree = "<group>"; };
 		6654E4C71EF65452003608E9 /* inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactive.png; sourceTree = "<group>"; };
 		6654E4C91EF657F4003608E9 /* study.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = study.png; sourceTree = "<group>"; };
+		6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sl_bg.jpg; sourceTree = "<group>"; };
 		666730B91E8C42B5003F40C4 /* Pref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pref.swift; sourceTree = "<group>"; };
 		666730BA1E8C42B5003F40C4 /* Pref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pref.xib; sourceTree = "<group>"; };
 		666730BD1E8C55AA003F40C4 /* JPS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JPS.entitlements; sourceTree = "<group>"; };
@@ -315,6 +317,7 @@
 		66BB828A1EDF1586001157F6 /* Nibs */ = {
 			isa = PBXGroup;
 			children = (
+				6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */,
 				66BB828B1EDF15AD001157F6 /* Working.xib */,
 				66BB828C1EDF15AD001157F6 /* Inactive.xib */,
 				66BB828D1EDF15AD001157F6 /* Sleeping.xib */,
@@ -444,6 +447,7 @@
 				66BB82921EDF15AD001157F6 /* Studying.xib in Resources */,
 				6687A1121E830581004554AE /* Assets.xcassets in Resources */,
 				666730BC1E8C42B5003F40C4 /* Pref.xib in Resources */,
+				6654E4CE1EF6E10D003608E9 /* sl_bg.jpg in Resources */,
 				6654E4C81EF65452003608E9 /* inactive.png in Resources */,
 				66BB827E1EDF1156001157F6 /* detail.xib in Resources */,
 				66795A791E980A86009A0089 /* Upload.xib in Resources */,

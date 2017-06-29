@@ -17,14 +17,20 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agt-wJ-kmm">
-                    <rect key="frame" x="181" y="288" width="109" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="Activity: Sleeping" id="de8-S1-axZ">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="byB-he-SDH">
+                    <rect key="frame" x="0.0" y="321" width="480" height="39"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6G-As-jQz">
+                            <rect key="frame" x="192" y="3" width="101" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sleeping" id="Ljj-4B-ylX">
+                                <font key="font" size="25" name=".AppleSystemUIFont"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oil-9D-6pe">
                     <rect key="frame" x="15" y="17" width="109" height="17"/>
                     <constraints>
@@ -48,15 +54,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfF-M3-zNh">
-                    <rect key="frame" x="171" y="315" width="129" height="32"/>
-                    <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m6o-zi-BMu">
-                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHc-Zo-jFP">
-                    <rect key="frame" x="150" y="236" width="171" height="44"/>
+                    <rect key="frame" x="154" y="158" width="171" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="167" id="IWz-uu-DK5"/>
                     </constraints>
@@ -66,19 +65,37 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfF-M3-zNh">
+                    <rect key="frame" x="176" y="122" width="129" height="32"/>
+                    <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m6o-zi-BMu">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="toggleSleep:" target="N7k-Kc-28R" id="tiy-ga-hIO"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
-                <constraint firstItem="dfF-M3-zNh" firstAttribute="centerX" secondItem="ddx-Ft-ugy" secondAttribute="centerX" constant="-5" id="2Nr-ta-wqU"/>
-                <constraint firstItem="dfF-M3-zNh" firstAttribute="top" secondItem="ddx-Ft-ugy" secondAttribute="top" constant="17" id="8sp-t2-9v8"/>
+                <constraint firstItem="dfF-M3-zNh" firstAttribute="centerX" secondItem="ddx-Ft-ugy" secondAttribute="centerX" constant="0.5" id="2Nr-ta-wqU"/>
+                <constraint firstItem="dfF-M3-zNh" firstAttribute="top" secondItem="ddx-Ft-ugy" secondAttribute="top" constant="210" id="8sp-t2-9v8"/>
                 <constraint firstItem="oil-9D-6pe" firstAttribute="leading" secondItem="ddx-Ft-ugy" secondAttribute="leading" constant="17" id="CBH-EM-CkP"/>
-                <constraint firstItem="dfF-M3-zNh" firstAttribute="centerX" secondItem="agt-wJ-kmm" secondAttribute="centerX" id="Ftn-W5-olv"/>
-                <constraint firstItem="agt-wJ-kmm" firstAttribute="top" secondItem="dfF-M3-zNh" secondAttribute="bottom" constant="17" id="S6R-Ip-B0G"/>
+                <constraint firstItem="dfF-M3-zNh" firstAttribute="top" secondItem="kHc-Zo-jFP" secondAttribute="bottom" constant="8" symbolic="YES" id="FAJ-Ed-Gdt"/>
+                <constraint firstItem="kHc-Zo-jFP" firstAttribute="centerX" secondItem="byB-he-SDH" secondAttribute="centerX" id="KGT-xz-p0w"/>
+                <constraint firstItem="byB-he-SDH" firstAttribute="leading" secondItem="ddx-Ft-ugy" secondAttribute="leading" id="Mce-Mt-nYR"/>
                 <constraint firstAttribute="bottom" secondItem="oil-9D-6pe" secondAttribute="bottom" constant="17" id="Ui2-gf-xb0"/>
                 <constraint firstItem="tha-Q1-ceA" firstAttribute="leading" secondItem="ddx-Ft-ugy" secondAttribute="leading" constant="114" id="Ycx-0Z-sAG"/>
-                <constraint firstItem="kHc-Zo-jFP" firstAttribute="top" secondItem="agt-wJ-kmm" secondAttribute="bottom" constant="8" symbolic="YES" id="fLP-ca-2Uw"/>
+                <constraint firstItem="kHc-Zo-jFP" firstAttribute="centerX" secondItem="ddx-Ft-ugy" secondAttribute="centerX" id="j1w-81-yLy"/>
                 <constraint firstItem="oil-9D-6pe" firstAttribute="baseline" secondItem="tha-Q1-ceA" secondAttribute="baseline" id="lk8-Ld-n4m"/>
-                <constraint firstItem="agt-wJ-kmm" firstAttribute="centerX" secondItem="kHc-Zo-jFP" secondAttribute="centerX" id="tI9-oK-t2N"/>
+                <constraint firstAttribute="bottom" secondItem="byB-he-SDH" secondAttribute="bottom" constant="321" id="qGj-j0-t0e"/>
+                <constraint firstItem="byB-he-SDH" firstAttribute="top" secondItem="ddx-Ft-ugy" secondAttribute="top" id="tXS-nL-44p"/>
             </constraints>
         </view>
+        <customObject id="N7k-Kc-28R" customClass="SleepHandler" customModule="JPS" customModuleProvider="target">
+            <connections>
+                <outlet property="displayTimeLabel" destination="kHc-Zo-jFP" id="XtS-mZ-xn0"/>
+                <outlet property="lA" destination="tha-Q1-ceA" id="FYP-wI-T6i"/>
+            </connections>
+        </customObject>
     </objects>
 </document>
