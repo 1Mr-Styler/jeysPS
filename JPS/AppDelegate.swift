@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window.contentViewController = Juuv
         self.window.orderFrontRegardless()
 
-        detailView?.push(AcViewCon())
+        detailView?.push(AcViewCon(), tag: 0)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

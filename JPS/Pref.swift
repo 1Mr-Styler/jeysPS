@@ -27,11 +27,10 @@ class Pref: NSWindowController {
     let uloView = ViewController(nibName: "Upload", bundle: nil)
     let genView = ViewController(nibName: "General", bundle: nil)
     
-    var username = "Not Logged In" //To display if user is logged in
+    var username = "Not Logged In"
+    
     var loginDate = Date()
-    
     var unsaved: [dataRetro] = []
-    
     var activeSub : NSView!
     
     @IBOutlet weak var label: NSTextField!
@@ -39,17 +38,22 @@ class Pref: NSWindowController {
     override func windowDidLoad() {
         super.windowDidLoad()
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        self.resize(.account)
         
-        self.mainView.addSubview((genView!.view))
-        activeSub = (genView!.view)
+            self.resize(.account)
+            
+            self.mainView.addSubview((genView!.view))
+            activeSub = (genView!.view)
+            
+            if !uH.isLoggedIn() {
+                //loginView.view.layer?.backgroundColor = NSColor(patternImage: NSImage(named: "collec.png")!).CGColor
+                
+                self.window!.beginSheet(loginWindow, completionHandler: nil)
+                
+            }
         
-        if !uH.isLoggedIn() {
-            //loginView.view.layer?.backgroundColor = NSColor(patternImage: NSImage(named: "collec.png")!).CGColor
-            
-            self.window!.beginSheet(loginWindow, completionHandler: nil)
-            
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loggedOut(_:)), name: .UH_USER_LOGGED_OUT, object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loggedIn(_:)), name: .UH_USER_LOGGED_IN, object: nil)
         
     }
     
@@ -61,9 +65,8 @@ class Pref: NSWindowController {
         
         super.init(window: window)
         //Initialization code here.
-
-        /*********************** Stuff for unsaved data *******************/
         
+        /*********************** Stuff for unsaved data *******************/
         
         let keys = uH.arrayOfKeys("") as! [String]
         
@@ -118,7 +121,6 @@ class Pref: NSWindowController {
         activeSub = (genView?.view)!
     }
     
-    
     @IBAction func help(_ sender: AnyObject) {
         label.stringValue = "I said no updates available!"
     }
@@ -134,23 +136,33 @@ class Pref: NSWindowController {
             for i in 0..<keys.count {
                 cObj = OBJ.object(forKey: keys[i]) as! [String]
                 var uRL : String
+                let del : WYDoing
+                
                 
                 switch cObj[0] {
                 case "Sleeping":
-                    uRL = "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=\(cObj[1])&ih=0&ph=0&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=\(cObj[1])&ih=0&ph=0&wh=0&ach=0"
+                    del = SleepHandler() as WYDoing
                 case "Working":
-                    uRL = "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(cObj[1])&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(cObj[1])&ach=0"
+                    del = WorkingClass() as WYDoing
                 case "Inactive":
-                    uRL = "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(cObj[1])&ph=0&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(cObj[1])&ph=0&wh=0&ach=0"
+                    del = Inactive() as WYDoing
                 case "Studying":
-                    uRL = "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=\(cObj[1])&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=\(cObj[1])&wh=0&ach=0"
+                    del = Studying() as WYDoing
                 default:
+                    // It'll never fall into here so everything here
+                    // is just for formality
                     uRL = ""
+                    del = WYDoing.self as! WYDoing
                     break
                 }
                 
                 if let url = URL(string: uRL) {
                     do {
+                        try del.WYDupload(cdc: userHandler.cdc, from: Int(cObj[1])!, to: Int(cObj[2])!)
                         _ = try NSString(contentsOf: url, usedEncoding: nil)
                         OBJ.removeObject(forKey: keys[i])
                         
@@ -176,16 +188,17 @@ class Pref: NSWindowController {
             let alert = NSAlert()
             alert.messageText = "Both fields are required!"
             alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
-            
         } else {
             let tryLogin = uH.login(userName.stringValue, pass: passWord.stringValue)
             let alert = NSAlert()
             
             switch tryLogin {
             case .loggedIn:
-//                self.loggedInAs.stringValue = userName.stringValue
+                self.username = userName.stringValue
                 self.window!.endSheet(sender.window)
                 sender.window.orderOut(self.window!)
+                
+                NotificationCenter.default.post(name: .UH_USER_LOGGED_IN, object: nil, userInfo: ["USN" : userName.stringValue])
             case .serverUnreachable:
                 alert.messageText = "Server Unreachable. Check your internet connection and try again."
                 alert.beginSheetModal(for: (sender.superview!!.window!), completionHandler: nil)
@@ -225,16 +238,27 @@ class Pref: NSWindowController {
         sender.window.orderOut(self.window!)
     }
     
+    @objc private func loggedOut(_ note: Notification) {
+        self.window!.beginSheet(loginWindow, completionHandler: nil)
+    }
+    
+    func loggedIn(_ note: Notification) {
+        let usn = note.userInfo?["USN"] as! String
+        self.loggedInAs.stringValue = usn
+    }
+    
     @IBAction func logOut(_ sender: AnyObject) {
         if uH.isLoggedIn() {
             UserDefaults.standard.removeObject(forKey: "loginDate")
             UserDefaults.standard.removeObject(forKey: "username")
             UserDefaults.standard.removeObject(forKey: "cdc")
             
-            
+            let lgt_username = sender.superview??.superview?.subviews[0].subviews[1] as! NSTextField
+            lgt_username.stringValue = "N/A"
         }
+        NotificationCenter.default.post(name: .UH_USER_LOGGED_OUT, object: nil)
+        
     }
-    
     
     func resize(_ who: ResizeGuy) {
         let windowFrame = window!.frame

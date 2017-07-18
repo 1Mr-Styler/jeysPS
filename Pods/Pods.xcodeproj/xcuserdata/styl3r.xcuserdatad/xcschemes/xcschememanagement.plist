@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>GRDB.swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JPS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JPSTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-JPSUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>25AA7196E07E64D3D37D4910D2BE34B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>681870983459E3D28E9D43948F737291</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8C538A7A7EB117A5E2E1532E99C5BB26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9ED1BD8A59F70EA7FC5526022485A5F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B524C2CCF3D898F81C9C9C3A194481A0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

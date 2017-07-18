@@ -20,7 +20,6 @@ class TableController: NSObject, NSTableViewDataSource {
         myRay.append(Tabler("My Top 10 (Monthly)", image: NSImage(named: "yearly.png")!))
     }
     
-    
     func numberOfRows(in _: NSTableView) -> Int {
         return myRay.count
     }
@@ -39,7 +38,18 @@ class TableController: NSObject, NSTableViewDataSource {
         if QuickLook.state == NSOnState {
             QuickLook.state = NSOffState //Turn off QuickLook button
         }
-        print("Row: \(table.selectedRow)");
+        let SL = SELECTED_ROW.init(rawValue: table.selectedRow)!
+        
+        NotificationCenter.default.post(name: .CS_TABLE_SELECTION_CHG, object: nil, userInfo: ["TXT": SL])
+    }
+    
+    enum SELECTED_ROW: Int {
+        case MOST_PRODUCTIVE_DAY = 0
+        case LEAST_PRODUCTIVE_DAY
+        case LEADERBOARD
+        case MY_TOP10_WEEK
+        case MY_TOP10_MONTH
+        
     }
 }
 

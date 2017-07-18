@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SleepHandler: NSObject {
+class SleepHandler: NSObject, WYDoing {
     
     var timer = Timer()
     var startTime = TimeInterval()
@@ -82,8 +82,9 @@ class SleepHandler: NSObject {
     }
     
     func updateData() {
-        if let url = URL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=\(Ran)&ih=0&ph=0&wh=0&ach=0") {
+        if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=\(Ran)&ih=0&ph=0&wh=0&ach=0") {
             do {
+                try WYDupload()
                 contents = try NSString(contentsOf: url, usedEncoding: nil)
                 lA.objectValue = Date()
                 Ran = 0
@@ -134,6 +135,30 @@ class SleepHandler: NSObject {
         startTime = Date.timeIntervalSinceReferenceDate
         StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
+    }
+    
+    func WYDupload() throws {
+        if let url = URL(string:
+            "http://jps.lyshnia.com/apr.php?api_hash=\(userHandler.cdc)&to=\(Ran)&from=\(StartedAt)&activity=sleeping&wyd") {
+            do {
+                contents = try NSString(contentsOf: url, usedEncoding: nil)
+                if contents != "done" {
+                    throw JPSServer.UNREACHABLE
+                }
+            }
+        }
+    }
+    
+    func WYDupload(cdc: String, from: Int, to: Int) throws {
+        if let url = URL(string:
+            "http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=sleeping&wyd") {
+            do {
+                contents = try NSString(contentsOf: url, usedEncoding: nil)
+                if contents != "done" {
+                    throw JPSServer.UNREACHABLE
+                }
+            }
+        }
     }
 
 }

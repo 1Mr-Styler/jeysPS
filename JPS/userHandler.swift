@@ -47,7 +47,7 @@ class userHandler: NSObject {
     var contents: NSString = ""
     
     @IBAction func setAchi(_ sender: AnyObject) {
-        if let url = URL(string: "http://localhost/jenny/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=0&ach=\(ach.stringValue)") {
+        if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=0&ach=\(ach.stringValue)") {
             do {
                 contents = try NSString(contentsOf: url, usedEncoding: nil)
                 print(contents)
@@ -125,7 +125,7 @@ class userHandler: NSObject {
     
     func login(_ user: String, pass: String) -> LoginGuy {
         
-        let uRL = "http://localhost/jenny/apr.php?login=\(user)&pas=\(pass)"
+        let uRL = "http://jps.lyshnia.com/apr.php?login=\(user)&pas=\(pass)"
         let OBJ = UserDefaults.standard
 
         if let url = URL(string: uRL) {
@@ -150,7 +150,7 @@ class userHandler: NSObject {
     }
     
     func createAccount(_ user: String, pass: String) -> LoginGuy {
-        let uRL = "http://localhost/jenny/apr.php?login=\(user)&pass=\(pass)"
+        let uRL = "http://jps.lyshnia.com/apr.php?login=\(user)&pass=\(pass)"
         let OBJ = UserDefaults.standard
         
         if let url = URL(string: uRL) {

@@ -10,6 +10,9 @@ import Cocoa
 
 class JVc: NSViewController {
     
+    // Save tags and their VCs
+    static var tagManager = [Int: NSViewController]()
+    
     fileprivate var activeViewCon : NSViewController?
     fileprivate var preWidth : CGFloat?
     fileprivate let sideBarWidth = CGFloat(256.0)
@@ -29,37 +32,70 @@ class JVc: NSViewController {
         // Do view setup here.
     }
     
-    func push(_ viewCon: NSViewController) {
-        self.addChildViewController(viewCon)
-        activeViewCon = viewCon
+    func push(_ viewCon: NSViewController, tag: Int, isActivity: Bool = true) {
+        
+        guard !JVc.tagManager.keys.contains(tag) else {
+            self.loadTag(tag: tag)
+            
+            return
+        }
+        
+        if isActivity {
+            self.addChildViewController(viewCon)
+            activeViewCon = viewCon
+            if self.view.subviews.count > 0 {
+                self.view.subviews[0].removeFromSuperview()
+            }
+            resize(((activeViewCon?.view.frame.width)! + sideBarWidth))
+            self.view.addSubview((activeViewCon?.view)!)
+
+        } else {
+            self.addChildViewController(viewCon)
+            if (asSplitGuy?.isCollapsed)! {
+                asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
+            }
+            activeViewCon = viewCon
+            if self.view.subviews.count > 0 {
+                self.view.subviews[0].removeFromSuperview()
+            }
+            resize(((activeViewCon?.view.frame.width)! + sideBarWidth))
+            self.view.addSubview((activeViewCon?.view)!)
+        }
+        
+        JVc.tagManager[tag] = activeViewCon
+    }
+    
+    func showActivities(_ withVC: NSViewController? = nil, restore: Bool = false) {
+        
+//        guard withVC != nil else {
+//            if (asSplitGuy?.isCollapsed)! {
+//                asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
+//                resize((preWidth! + sideBarWidth))
+//            } else {
+//                preWidth = activeViewCon?.view.frame.width
+//                asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
+//                resize(CGFloat(sideBarWidth))
+//            }
+//            return
+//        }
+//        
+//        
+//        if (asSplitGuy?.isCollapsed)! {
+//            asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
+//            preWidth = activeViewCon?.view.frame.width
+//            resize((preWidth! + sideBarWidth))
+//        }
+        self.push(withVC!, tag: 0)
+    }
+    
+    func loadTag(tag: Int) {
+        activeViewCon = JVc.tagManager[tag]
         if self.view.subviews.count > 0 {
             self.view.subviews[0].removeFromSuperview()
         }
         resize(((activeViewCon?.view.frame.width)! + sideBarWidth))
         self.view.addSubview((activeViewCon?.view)!)
-    }
-    
-    func showActivities(_ withVC: NSViewController? = nil, restore: Bool = false) {
-        
-        guard withVC != nil else {
-            if (asSplitGuy?.isCollapsed)! {
-                asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
-                resize((preWidth! + sideBarWidth))
-            } else {
-                preWidth = activeViewCon?.view.frame.width
-                asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
-                resize(CGFloat(sideBarWidth))
-            }
-            return
-        }
-        
-        
-        if (asSplitGuy?.isCollapsed)! {
-            asSplitGuy?.isCollapsed = !(asSplitGuy?.isCollapsed)!
-            preWidth = activeViewCon?.view.frame.width
-            resize((preWidth! + sideBarWidth))
-        }
-        self.push(withVC!)
+
     }
 
     
