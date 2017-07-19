@@ -34,9 +34,8 @@ class JVc: NSViewController {
     
     func push(_ viewCon: NSViewController, tag: Int, isActivity: Bool = true) {
         
-        guard !JVc.tagManager.keys.contains(tag) else {
+        guard !JVc.tagManager.keys.contains(tag) || tag == 3 else {
             self.loadTag(tag: tag)
-            
             return
         }
         

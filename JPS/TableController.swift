@@ -32,6 +32,10 @@ class TableController: NSObject, NSTableViewDataSource {
         return MyNSTableRowView()
     }
     
+    func deselect(_ note: Notification) {
+        
+    }
+    
     @IBOutlet var QuickLook: NSButton!
     func tableViewSelectionDidChange(_ notification: Notification) {
         let table = notification.object as! NSTableView

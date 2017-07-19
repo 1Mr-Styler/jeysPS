@@ -244,7 +244,7 @@ class Pref: NSWindowController {
     
     func loggedIn(_ note: Notification) {
         let usn = note.userInfo?["USN"] as! String
-        self.loggedInAs.stringValue = usn
+//        self.loggedInAs.stringValue = usn
     }
     
     @IBAction func logOut(_ sender: AnyObject) {
