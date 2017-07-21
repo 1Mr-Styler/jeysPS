@@ -1,0 +1,23 @@
+{
+    "Working": {
+        "previous": 86000,
+        "current": 540,
+        "total": 93
+    },
+    "Sleeping": {
+        "previous": 0,
+        "current": 0,
+        "total": 500
+    },
+    "Inactive": {
+        "previous": 0,
+        "current": 0,
+        "total": 500
+    },
+    "Studying": {
+        "previous": 0,
+        "current": 0,
+        "total": 500
+    }
+
+}

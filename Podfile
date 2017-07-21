@@ -8,7 +8,6 @@ target 'JPS' do
   use_frameworks!
 
   # Pods for JPS
-  pod 'GRDB.swift'
   pod 'SwiftyJSON'
 
   target 'JPSTests' do

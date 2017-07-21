@@ -37,10 +37,11 @@ class ViewController: NSViewController {
         let appDeli = NSApplication.shared().delegate as! AppDelegate
         
         if enableMenu.state == NSOnState {
-            appDeli.MenuBar()
+            appDeli.menubar = MenuBar()
+            appDeli.menubar?.setUp()
             UserDefaults.standard.set(1, forKey: "showMB")
         } else {
-            appDeli.MenuBarRemove()
+            appDeli.menubar?.remove()
             UserDefaults.standard.set(0, forKey: "showMB")
         }
     }

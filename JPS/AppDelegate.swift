@@ -17,8 +17,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let About = about(windowNibName: "about")
     var uH = userHandler()
 
-    var statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-
+    var menubar : MenuBar?
+    
     var Juuv = Juveni()
 
     var detailView: JVc? {
@@ -35,17 +35,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.window.titlebarAppearsTransparent = true
         self.window.styleMask.insert(.fullSizeContentView)
 
-
-        if uH.hasMenuBar {
-            self.MenuBar()
-        }
-
         self.window.backgroundColor = NSColor.init(red: CGFloat(0.941), green: CGFloat(0.973), blue: CGFloat(1.0), alpha: CGFloat(1))
 
         self.window.contentViewController = Juuv
         self.window.orderFrontRegardless()
 
         detailView?.push(AcViewCon(), tag: 0)
+        
+        if uH.hasMenuBar {
+            menubar = MenuBar()
+            menubar?.setUp()
+            self.window.close()
+        }
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -83,36 +84,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.shared().setActivationPolicy(NSApplicationActivationPolicy.accessory)
 
         } else {
+            self.menubar?.hide((self.menubar?.statusItem.button)!)
             NSApplication.shared().setActivationPolicy(NSApplicationActivationPolicy.regular)
             self.window!.makeKeyAndOrderFront(nil)
             NSApp.activate(ignoringOtherApps: true)
         }
     }
 
-    func MenuBarRemove() {
-        NSStatusBar.system().removeStatusItem(self.statusItem)
-    }
-
-    func MenuBar() {
-        self.statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-
-        guard let button = self.statusItem.button else {
-            exit(0)
-        }
-
-        button.image = NSImage(named: "StatusIcon")
-        //        button.action = #selector(AppDelegate.toggleApp(_:))
-
-        let OurMenu = NSMenu()
-        let menuItem = NSMenuItem(title: "Show App", action: #selector(AppDelegate.toggleApp(_:)), keyEquivalent: "s")
-        let menuItemQuit = NSMenuItem(title: "Quit JPS", action: #selector(AppDelegate.quitApp(_:)), keyEquivalent: "q")
-        menuItem.target = self
-        menuItemQuit.target = self
-        OurMenu.addItem(menuItem)
-        OurMenu.addItem(menuItemQuit)
-
-        self.statusItem.menu = OurMenu
-    }
 
     func isAppAlreadyLaunchedOnce() -> Bool {
         let defaults = UserDefaults.standard
@@ -131,9 +109,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         About.showWindow(self.window)
     }
 
-    func quitApp(_ sender: AnyObject) {
-        exit(0)
-    }
 }
 
 

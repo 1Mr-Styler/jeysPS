@@ -8,7 +8,8 @@
     "0_5": [
       "6/7/17",
       "Added Quit Button to MenuBar",
-      "Fixed SplitView Issue"
+      "Fixed SplitView Issue",
+      "Implemented leaderboard"
     ]
   },
   "used_in": {
@@ -20,5 +21,5 @@
   "future": {
     "status": "desc"
   },
-  "last_upd": "6/29/17 7:52 PM"
+  "last_upd": "7/19/17 5:13 PM"
 }
