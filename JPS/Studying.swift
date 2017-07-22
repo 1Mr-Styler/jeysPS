@@ -29,6 +29,7 @@ class Studying: NSObject, WYDoing {
         
         if userHandler.activeClass != "Studying" {
             userHandler.createAlert("Warning!", txt: "Stop previous activity before starting a new one")
+            (sender as! NSButton).state = NSOffState
         } else {
             if !isActive {
                 self.start()

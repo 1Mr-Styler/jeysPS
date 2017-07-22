@@ -243,7 +243,7 @@ class Pref: NSWindowController {
     }
     
     func loggedIn(_ note: Notification) {
-        let usn = note.userInfo?["USN"] as! String
+        _ = note.userInfo?["USN"] as! String
 //        self.loggedInAs.stringValue = usn
     }
     

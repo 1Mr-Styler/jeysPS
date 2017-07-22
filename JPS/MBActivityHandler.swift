@@ -11,9 +11,21 @@ import SwiftyJSON
 
 class MBActivityHandler: NSObject {
     private var currAct: MBActivity
+    private var isLoading = false
     var total: Int = 0
     var previous: Int = 0
-    var current: Int = 0
+    var current: Int = 0 {
+        willSet {
+            if !isLoading {
+                previous = current
+                total = total + newValue
+            }
+        }
+    }
+    
+    override var description: String {
+        return "Total time \(self.currAct.activity) today: \(self.toHMS(seconds: self.total))"
+    }
     
     init(currently activity: MBActivity) {
         self.currAct = activity
@@ -31,8 +43,15 @@ class MBActivityHandler: NSObject {
     }
     
     func load() {
+        self.isLoading = true
         let data = self.currAct.load()
         self.total = (data?.total)!
+        self.current = (data?.current)!
+        self.isLoading = false
+    }
+    
+    deinit {
+        self.save()
     }
     
 }
@@ -112,5 +131,10 @@ class MBActivityData: NSObject {
     
 }
 
-
+extension Notification.Name {
+    static let MB_ACTIVITY_SLEEPING = Notification.Name("MB_ACTIVITY_SLEEPING")
+    static let MB_ACTIVITY_WORKING = Notification.Name("MB_ACTIVITY_WORKING")
+    static let MB_ACTIVITY_INACTIVE = Notification.Name("MB_ACTIVITY_INACTIVE")
+    static let MB_ACTIVITY_STUDYING = Notification.Name("MB_ACTIVITY_STUDYING")
+}
 

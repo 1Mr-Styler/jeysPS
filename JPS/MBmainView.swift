@@ -54,9 +54,12 @@ class MBmainView: NSView {
                         
                     } catch {
                         // contents could not be loaded
-                        jps.stringValue  = "N/A"
-                        rank.stringValue = "N/A"
-                        info.stringValue = "(Are you sure your internet is working?)"
+                        DispatchQueue.main.async {
+                            jps.stringValue  = "N/A"
+                            rank.stringValue = "N/A"
+                            info.stringValue = "(Are you sure your internet is working?)"
+                            self.unhideData()
+                        }
                     }
                 }
             } else {
@@ -69,11 +72,11 @@ class MBmainView: NSView {
     
     func hideData() {
         self.isHidden = true
-        self.superview?.subviews[5].isHidden = false
+        self.superview?.subviews[4].isHidden = false
     }
     
     func unhideData() {
-        self.superview?.subviews[5].isHidden = true
+        self.superview?.subviews[4].isHidden = true
         self.isHidden = false
     }
 }

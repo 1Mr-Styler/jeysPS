@@ -16,6 +16,7 @@ class MenuBarVC: NSViewController {
     let appDeli = NSApplication.shared().delegate as! AppDelegate
     let uH = userHandler()
     var mbdtails: JSON?
+    var MBaH: MBActivityHandler!
     
     // MARK - Outlets for Main Texts
     @IBOutlet var jps: NSTextField!
@@ -24,6 +25,22 @@ class MenuBarVC: NSViewController {
     @IBOutlet var lastUpdated: NSTextField!
     @IBOutlet var titleActivity: NSTextField!
     
+    
+    // MARK - Outlets for Activities
+    @IBOutlet var mainTitle: NSTextField!
+    @IBOutlet var currently: NSTextField!
+    @IBOutlet var currentActivity: NSTextField!
+    @IBOutlet var prevActivity: NSTextField!
+    
+    
+    // MARK - Timer stuff
+    var timer = Timer()
+    var startTime = TimeInterval()
+    var isActive = false
+    var StartedAt : Int = 0
+    var StopAt : Int = 0
+    var Ran : Int = 0
+    var contents: NSString = ""
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -39,8 +56,7 @@ class MenuBarVC: NSViewController {
         // Do view setup here.
         
         //Gif laoder
-        
-        let loadingGif = self.view.subviews[5] as! NSImageView
+        let loadingGif = self.view.subviews[4] as! NSImageView
         loadingGif.canDrawSubviewsIntoLayer = true
         loadingGif.imageScaling = .scaleProportionallyDown
         
@@ -56,27 +72,14 @@ class MenuBarVC: NSViewController {
         titleBarView.layer?.backgroundColor = NSColor(red: 114.0/255.0, green: 114.0/255.0, blue: 113.0/255.0, alpha: 1.0).cgColor
         
         // Activities stuff
-        self.activitiesMenu.addItem(NSMenuItem(title: "Sleeping", action: #selector(self.quitApp(_:)), keyEquivalent: "s"))
-        self.activitiesMenu.addItem(NSMenuItem(title: "Working", action: #selector(self.quitApp(_:)), keyEquivalent: "w"))
-        self.activitiesMenu.addItem(NSMenuItem(title: "Inactive", action: #selector(self.quitApp(_:)), keyEquivalent: "i"))
-        self.activitiesMenu.addItem(NSMenuItem(title: "Studying", action: #selector(self.quitApp(_:)), keyEquivalent: "r"))
+        let actvWrking = NSMenuItem(title: "Working", action: #selector(self.activityLoad(_:)), keyEquivalent: "w")
+        self.activitiesMenu.addItem(NSMenuItem(title: "Sleeping", action: #selector(self.activityLoad(_:)), keyEquivalent: "s"))
+        self.activitiesMenu.addItem(actvWrking)
+        self.activitiesMenu.addItem(NSMenuItem(title: "Inactive", action: #selector(self.activityLoad(_:)), keyEquivalent: "i"))
+        self.activitiesMenu.addItem(NSMenuItem(title: "Studying", action: #selector(self.activityLoad(_:)), keyEquivalent: "r"))
         
-        if uH.isLoggedIn() {
-            self.jps.stringValue = String(format: "%0.2f%%", (mbdtails?["jps"].floatValue)!)
-            self.rank.stringValue = (mbdtails?["rank"].string!)!
-            self.info.stringValue = {() -> String  in
-                if (mbdtails?["diff"].floatValue)! >= 0 {
-                    return "(Thats a \((mbdtails?["diff"].floatValue)!)% increase from yesterday)"
-                } else {
-                    return "(Thats a \(abs((mbdtails?["diff"].floatValue)!))% decrease from yesterday)"
-                }
-                
-            }()
-        } else {
-            jps.stringValue = "N/A"
-            rank.stringValue = "N/A"
-            info.stringValue = "(You need to be logged in to view this)"
-        }
+        (self.view.subviews[3] as! MBmainView).loadData()
+        self.activityLoad(actvWrking)
         
     }
     
@@ -108,7 +111,6 @@ class MenuBarVC: NSViewController {
         
     }
     
-    
     func showAbout(_ sender: AnyObject) {
         self.appDeli.showAbout(sender)
     }
@@ -129,5 +131,136 @@ class MenuBarVC: NSViewController {
             }
         }
 
+    }
+    
+    @IBAction func toggleActivity(_ sender: Any) {
+        let me = (sender as! NSButton)
+        
+        if self.currentActivity.stringValue != "Nothing"
+        {self.prevActivity.stringValue = self.currentActivity.stringValue}
+        
+        if me.state == NSOnState {
+            self.currentActivity.stringValue = self.mainTitle.stringValue
+            self.start()
+            
+            
+        } else {
+            self.currentActivity.stringValue = "Nothing"
+            self.stop()
+            MBaH.current = self.Ran
+            MBaH.save()
+        }
+    }
+    
+    func activityLoad(_ sender: Any) {
+        
+        switch (sender as! NSMenuItem).title {
+        case "Working":
+            self.MBaH = MBActivityHandler(currently: .WORKING)
+        case "Sleeping":
+            self.MBaH = MBActivityHandler(currently: .SLEEPING)
+        case "Studying":
+            self.MBaH = MBActivityHandler(currently: .STUDYING)
+        default:
+            self.MBaH = MBActivityHandler(currently: .INACTIVE)
+        }
+        
+        MBaH.load()
+        self.mainTitle.stringValue = (sender as! NSMenuItem).title
+        self.currently.stringValue = MBaH.toHMS(seconds: MBaH.current)
+        
+        if self.currentActivity.stringValue != "Nothing" {
+            if (sender as! NSMenuItem).title != userHandler.activeClass {
+                self.view.subviews[2].subviews[0].isHidden = true
+                self.view.subviews[2].subviews[6].isHidden = false
+                (self.view.subviews[2].subviews[6] as! NSTextField).stringValue = MBaH.description
+                (self.view.subviews[2].subviews[5] as! NSButton).isEnabled = false
+            } else {
+                self.view.subviews[2].subviews[0].isHidden = false
+                self.view.subviews[2].subviews[6].isHidden = true
+                (self.view.subviews[2].subviews[5] as! NSButton).isEnabled = true
+            }
+        } else {
+            self.view.subviews[2].subviews[0].isHidden = false
+            self.view.subviews[2].subviews[6].isHidden = true
+            (self.view.subviews[2].subviews[5] as! NSButton).isEnabled = true
+        }
+    }
+    
+    func updateTime() {
+        
+        let currentTime = Date.timeIntervalSinceReferenceDate
+        
+        //Find the difference between current time and start time.
+        
+        var elapsedTime: TimeInterval = currentTime - startTime
+        
+        //calculate the hours in elapsed time.
+        let hours = UInt8(elapsedTime / 3600.0)
+        
+        elapsedTime -= (TimeInterval(hours) * 3600)
+        
+        //calculate the minutes in elapsed time.
+        let minutes = UInt8(elapsedTime / 60.0)
+        
+        elapsedTime -= (TimeInterval(minutes) * 60)
+        
+        //calculate the seconds in elapsed time.
+        
+        let seconds = UInt8(elapsedTime)
+        
+        elapsedTime -= TimeInterval(seconds)
+        
+        //find out the fraction of milliseconds to be displayed.
+        
+        
+        //add the leading zero for minutes, seconds and millseconds and store them as string constants
+        
+        let strHours = String(format: "%02d", hours)
+        let strMinutes = String(format: "%02d", minutes)
+        let strSeconds = String(format: "%02d", seconds)
+        
+        
+        //concatenate minuets, seconds and milliseconds as assign it to the UILabel
+        
+        currently.stringValue = "\(strHours):\(strMinutes):\(strSeconds)"
+        self.isAlmost12()
+    }
+    
+    func stop() {
+        userHandler.activeClass = ""
+        StopAt = Int(Date().timeIntervalSince1970)
+        timer.invalidate()
+        isActive = false
+        Ran = StopAt - StartedAt
+//        updateData()
+        
+    }
+    
+    func isAlmost12() {
+        let form = DateFormatter()
+        
+        form.timeStyle = .medium
+        form.dateStyle = .none
+        
+        let l = Date.init(timeIntervalSince1970: Date().timeIntervalSince1970)
+        
+        let theTimeIs = form.string(from: l) //"12:49:17 AM"
+        
+        if theTimeIs == "11:59:55 PM" {
+            //Cuz its almost a new day, stop current activity and start new one
+            self.stop()
+            self.start()
+        }
+        
+    }
+    
+    func start() {
+        userHandler.activeClass = self.mainTitle.stringValue
+        let aSelector : Selector = #selector(self.updateTime)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: aSelector, userInfo: nil, repeats: true)
+        startTime = Date.timeIntervalSinceReferenceDate
+        StartedAt = Int(Date().timeIntervalSince1970)
+        isActive = true
     }
 }

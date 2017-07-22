@@ -33,6 +33,7 @@ class SleepHandler: NSObject, WYDoing {
         
         if userHandler.activeClass != "SleepHandler" {
             userHandler.createAlert("Warning!", txt: "Stop previous activity before starting a new one")
+            (sender as! NSButton).state = NSOffState
         } else {
             if !isActive {
                 self.start()

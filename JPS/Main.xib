@@ -8,9 +8,13 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MenuBarVC" customModule="JPS" customModuleProvider="target">
             <connections>
+                <outlet property="currentActivity" destination="2p1-9q-JCM" id="4lI-O8-AT0"/>
+                <outlet property="currently" destination="WRo-LB-u7O" id="tzx-yP-i6B"/>
                 <outlet property="info" destination="bkT-a8-PPD" id="jzU-H3-dCf"/>
                 <outlet property="jps" destination="I4g-or-4Nr" id="vNQ-hN-7zg"/>
                 <outlet property="lastUpdated" destination="t98-hl-HcP" id="ubm-OA-6B3"/>
+                <outlet property="mainTitle" destination="iZ5-jD-hrq" id="3pX-sx-uDB"/>
+                <outlet property="prevActivity" destination="KzO-PG-Ipv" id="XkW-ry-90g"/>
                 <outlet property="rank" destination="S4R-1g-jQM" id="H3f-by-fWO"/>
                 <outlet property="titleActivity" destination="iZ5-jD-hrq" id="HTp-eL-vqm"/>
                 <outlet property="view" destination="c22-O7-iKe" id="bOW-gA-uCW"/>
@@ -120,9 +124,9 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2p1-9q-JCM">
-                            <rect key="frame" x="98" y="38" width="54" height="17"/>
+                            <rect key="frame" x="98" y="38" width="73" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Working" id="UA3-Dv-xwe">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nothing" id="UA3-Dv-xwe">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" red="0.49015659093856812" green="0.49021828174591064" blue="0.4901355504989624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -138,9 +142,9 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzO-PG-Ipv">
-                            <rect key="frame" x="98" y="13" width="57" height="17"/>
+                            <rect key="frame" x="98" y="13" width="73" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Sleeping" id="Vaz-1U-s8h">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nothing" id="Vaz-1U-s8h">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" red="0.49015659093856812" green="0.49021828174591064" blue="0.4901355504989624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -153,13 +157,21 @@
                                 <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <action selector="toggleActivity:" target="-2" id="lTK-bE-pGm"/>
+                            </connections>
                         </button>
+                        <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpA-e6-fgV">
+                            <rect key="frame" x="18" y="116" width="233" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total time Studying today: 00:12:33" id="kvZ-cN-5U7">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" red="0.4670184850692749" green="0.47065228223800659" blue="0.47883647680282593" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
                     </subviews>
                 </customView>
-                <box appearanceType="aqua" verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="e4j-A4-hUe">
-                    <rect key="frame" x="67" y="83" width="135" height="39"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DpH-v2-yTH" customClass="MBmainView" customModule="JPS" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="37" width="269" height="62"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
