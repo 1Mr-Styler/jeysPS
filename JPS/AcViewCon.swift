@@ -46,9 +46,9 @@ class AcViewCon: NSViewController {
     
     static var loadedVCs = [String: ViewController]()
     
-    func loadVC(vc: ViewController, activity: String) {
+    func loadVC(vc: ViewController, activity: String, reload: Bool = false) {
         
-        if AcViewCon.loadedVCs.keys.contains(activity) {
+        if !reload && AcViewCon.loadedVCs.keys.contains(activity) {
             let vc = AcViewCon.loadedVCs[activity]
             self.view.addSubview((vc?.view)!)
             self.view.replaceSubview((AcViewCon.currVC?.view)!, with: (vc?.view)!)

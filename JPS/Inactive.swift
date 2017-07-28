@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Inactive: NSObject, WYDoing {
+class Inactive: NSView, WYDoing {
     var timer = Timer()
     var startTime = TimeInterval()
     var isActive = false
@@ -19,10 +19,35 @@ class Inactive: NSObject, WYDoing {
     var contents: NSString = ""
     
     
-    @IBOutlet weak var displayTimeLabel: NSTextField!
-    @IBOutlet weak var lA: NSTextField!
+    var displayTimeLabel: NSTextField!
+    var lA: NSTextField!
+    var button: NSButton!
     
-    @IBAction func toggleInactivity(_ sender: AnyObject) {
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        self.lA = self.subviews[2] as! NSTextField
+        self.button = self.subviews[3] as! NSButton
+        self.displayTimeLabel = self.subviews[4] as! NSTextField
+        
+        self.button.target = self
+        self.button.action = #selector(self.toggleInactivity(_:))
+    }
+    
+    func MBActivity(_ note: Notification) {
+        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        
+        switch msg! {
+        case .Start:
+            DispatchQueue.main.async {
+                self.start()
+            }
+        case .Stop:
+            self.stop()
+        }
+    }
+    
+    func toggleInactivity(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
             userHandler.activeClass = "Inactive"
         }
@@ -86,16 +111,16 @@ class Inactive: NSObject, WYDoing {
                 contents = try NSString(contentsOf: url, usedEncoding: nil)
                 lA.objectValue = Date()
                 Ran = 0
-                print(contents)
+                Swift.print(contents)
             } catch {
                 // contents could not be loaded
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Inactive", lenght: String(Ran), start: String(StartedAt)))
-                print("// contents could not be loaded")
+                Swift.print("// contents could not be loaded")
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
         } else {
-            print("Something isnt right")
+            Swift.print("Something isnt right")
         }
     }
     
@@ -106,7 +131,8 @@ class Inactive: NSObject, WYDoing {
         isActive = false
         Ran = StopAt - StartedAt
         updateData()
-        print("Timer ran for \(Ran) seconds")
+        Swift.print("Timer ran for \(Ran) seconds")
+        button.state = NSOffState
     }
     
     func isAlmost12() {
@@ -133,6 +159,7 @@ class Inactive: NSObject, WYDoing {
         startTime = Date.timeIntervalSinceReferenceDate
         StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
+        button.state = NSOnState
     }
     
     func WYDupload() throws {

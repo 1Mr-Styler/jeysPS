@@ -43,6 +43,25 @@ class sideBar: NSViewController {
             print("K")
         case .MY_TOP10_MONTH:
             print("J")
+        case .MB_LOADER:            
+            let info = note.userInfo?["MB_INFO"] as! String
+            let acViewCon = JVc.tagManager[0] as! AcViewCon
+            
+            
+            switch info {
+            case "Sleeping":
+                acViewCon.loadVC(vc: ViewController(nibName: info, bundle: nil)!, activity: "sleep", reload: userHandler.activeClass != info)
+                acViewCon.sleep(NSButton())
+            case "Working":
+                acViewCon.loadVC(vc: ViewController(nibName: info, bundle: nil)!, activity: "work", reload: userHandler.activeClass != info)
+                acViewCon.work(NSButton())
+            case "Studying":
+                acViewCon.loadVC(vc: ViewController(nibName: info, bundle: nil)!, activity: "study", reload: userHandler.activeClass != info)
+                acViewCon.study(NSButton())
+            default:
+                acViewCon.loadVC(vc: ViewController(nibName: info, bundle: nil)!, activity: "inactive", reload: userHandler.activeClass != info)
+                acViewCon.inactive(NSButton())
+            }
         }
     }
     

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class WorkingClass: NSObject, WYDoing {
+class WorkingClass: NSView, WYDoing {
     var timer = Timer()
     var startTime = TimeInterval()
     var isActive = false
@@ -19,10 +19,35 @@ class WorkingClass: NSObject, WYDoing {
     var contents: NSString = ""
     
     
-    @IBOutlet weak var displayTimeLabel: NSTextField!
-    @IBOutlet weak var lA: NSTextField!
+    var displayTimeLabel: NSTextField!
+    var lA: NSTextField!
+    var button: NSButton!
     
-    @IBAction func toggleWork(_ sender: AnyObject) {
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        self.lA = self.subviews[2] as! NSTextField
+        self.button = self.subviews[3] as! NSButton
+        self.displayTimeLabel = self.subviews[4] as! NSTextField
+        
+        self.button.target = self
+        self.button.action = #selector(self.toggleWork(_:))
+    }
+    
+    func MBActivity(_ note: Notification) {
+        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        
+        switch msg! {
+        case .Start:
+            DispatchQueue.main.async {
+                self.start()
+            }
+        case .Stop:
+            self.stop()
+        }
+    }
+    
+    func toggleWork(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
             userHandler.activeClass = "WorkingClass"
         }
@@ -80,22 +105,22 @@ class WorkingClass: NSObject, WYDoing {
     }
     
     func updateData() {
+        Swift.print(Ran)
         if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0") {
             do {
                 try WYDupload()
                 contents = try NSString(contentsOf: url, usedEncoding: nil)
                 lA.objectValue = Date()
                 Ran = 0
-                print(contents)
             } catch {
                 // contents could not be loaded
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Working", lenght: String(Ran), start: String(StartedAt)))
-                print("// contents could not be loaded")
+                
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
         } else {
-            print("Something isnt right")
+            // Something isnt right
         }
     }
     
@@ -106,7 +131,8 @@ class WorkingClass: NSObject, WYDoing {
         isActive = false
         Ran = StopAt - StartedAt
         updateData()
-        print("Timer ran for \(Ran) seconds")
+        button.state = NSOffState
+        Swift.print("Timer ran for \(Ran) seconds")
     }
     
     func isAlmost12() {
@@ -133,6 +159,7 @@ class WorkingClass: NSObject, WYDoing {
         startTime = Date.timeIntervalSinceReferenceDate
         StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
+        button.state = NSOnState
     }
 
     func WYDupload() throws {

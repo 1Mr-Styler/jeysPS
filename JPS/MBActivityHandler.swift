@@ -111,6 +111,8 @@ class MBActivityData: NSObject {
         json?[self.activity]["previous"].intValue = self.previous!
         json?[self.activity]["current"].intValue = self.current!
         
+        json?["LastRun"].doubleValue = Date().timeIntervalSince1970
+        
         let rep = json?.rawString([.castNilToNSNull: true])
         
         do {
@@ -127,6 +129,23 @@ class MBActivityData: NSObject {
         self.total = json?[self.activity]["total"].intValue
         self.previous = json?[self.activity]["previous"].intValue
         self.current = json?[self.activity]["current"].intValue
+        
+        // Reset timers to 0 if its a new day
+        let fromLoaded = Date.init(timeIntervalSince1970: (json?["LastRun"].double)!)
+        let fromNow = Date.init(timeIntervalSince1970: Date().timeIntervalSince1970)
+        let form = DateFormatter()
+        
+        form.timeStyle = .none
+        form.dateStyle = .short
+        
+        
+        if form.string(from: fromLoaded) != form.string(from: fromNow) {
+            //Cuz its almost a new day, stop current activity and start new one
+            self.total = 0
+            self.previous = 0
+            self.current = 0
+        }
+        
     }
     
 }
@@ -138,3 +157,7 @@ extension Notification.Name {
     static let MB_ACTIVITY_STUDYING = Notification.Name("MB_ACTIVITY_STUDYING")
 }
 
+enum MB_Activity {
+    case Start
+    case Stop
+}

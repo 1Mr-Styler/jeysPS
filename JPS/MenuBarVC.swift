@@ -143,8 +143,29 @@ class MenuBarVC: NSViewController {
             self.currentActivity.stringValue = self.mainTitle.stringValue
             self.start()
             
+            switch self.currentActivity.stringValue {
+            case "Sleeping":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_SLEEPING, object: nil, userInfo: ["V": MB_Activity.Start])
+            case "Working":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_WORKING, object: nil, userInfo: ["V": MB_Activity.Start])
+            case "Studying":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Start])
+            default:
+                NotificationCenter.default.post(name: .MB_ACTIVITY_INACTIVE, object: nil, userInfo: ["V": MB_Activity.Start])
+            }
             
         } else {
+            switch self.currentActivity.stringValue {
+            case "Sleeping":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_SLEEPING, object: nil, userInfo: ["V": MB_Activity.Stop])
+            case "Working":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_WORKING, object: nil, userInfo: ["V": MB_Activity.Stop])
+            case "Studying":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Stop])
+            default:
+                NotificationCenter.default.post(name: .MB_ACTIVITY_INACTIVE, object: nil, userInfo: ["V": MB_Activity.Stop])
+            }
+            
             self.currentActivity.stringValue = "Nothing"
             self.stop()
             MBaH.current = self.Ran
@@ -154,14 +175,19 @@ class MenuBarVC: NSViewController {
     
     func activityLoad(_ sender: Any) {
         
+        let SL = TableController.SELECTED_ROW(rawValue: 5)
         switch (sender as! NSMenuItem).title {
         case "Working":
+            NotificationCenter.default.post(name: .CS_TABLE_SELECTION_CHG, object: nil, userInfo: ["TXT": SL!, "MB_INFO": "Working"])
             self.MBaH = MBActivityHandler(currently: .WORKING)
         case "Sleeping":
+            NotificationCenter.default.post(name: .CS_TABLE_SELECTION_CHG, object: nil, userInfo: ["TXT": SL!, "MB_INFO": "Sleeping"])
             self.MBaH = MBActivityHandler(currently: .SLEEPING)
         case "Studying":
+            NotificationCenter.default.post(name: .CS_TABLE_SELECTION_CHG, object: nil, userInfo: ["TXT": SL!, "MB_INFO": "Studying"])
             self.MBaH = MBActivityHandler(currently: .STUDYING)
         default:
+            NotificationCenter.default.post(name: .CS_TABLE_SELECTION_CHG, object: nil, userInfo: ["TXT": SL!, "MB_INFO": "Inactive"])
             self.MBaH = MBActivityHandler(currently: .INACTIVE)
         }
         

@@ -13,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view wantsLayer="YES" id="ddx-Ft-ugy">
+        <view wantsLayer="YES" id="ddx-Ft-ugy" customClass="SleepHandler" customModule="JPS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -54,6 +54,13 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfF-M3-zNh">
+                    <rect key="frame" x="176" y="122" width="129" height="32"/>
+                    <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m6o-zi-BMu">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHc-Zo-jFP">
                     <rect key="frame" x="154" y="158" width="171" height="44"/>
                     <constraints>
@@ -65,16 +72,6 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dfF-M3-zNh">
-                    <rect key="frame" x="176" y="122" width="129" height="32"/>
-                    <buttonCell key="cell" type="push" title="Start Counting" alternateTitle="Stop Counting" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m6o-zi-BMu">
-                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="toggleSleep:" target="N7k-Kc-28R" id="tiy-ga-hIO"/>
-                    </connections>
-                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="dfF-M3-zNh" firstAttribute="centerX" secondItem="ddx-Ft-ugy" secondAttribute="centerX" constant="0.5" id="2Nr-ta-wqU"/>
@@ -91,11 +88,5 @@
                 <constraint firstItem="byB-he-SDH" firstAttribute="top" secondItem="ddx-Ft-ugy" secondAttribute="top" id="tXS-nL-44p"/>
             </constraints>
         </view>
-        <customObject id="N7k-Kc-28R" customClass="SleepHandler" customModule="JPS" customModuleProvider="target">
-            <connections>
-                <outlet property="displayTimeLabel" destination="kHc-Zo-jFP" id="XtS-mZ-xn0"/>
-                <outlet property="lA" destination="tha-Q1-ceA" id="FYP-wI-T6i"/>
-            </connections>
-        </customObject>
     </objects>
 </document>

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SleepHandler: NSObject, WYDoing {
+class SleepHandler: NSView, WYDoing {
     
     var timer = Timer()
     var startTime = TimeInterval()
@@ -23,8 +23,34 @@ class SleepHandler: NSObject, WYDoing {
     @IBOutlet weak var myTabView: NSTabViewItem!
     
     
-    @IBOutlet weak var displayTimeLabel: NSTextField!
-    @IBOutlet weak var lA: NSTextField!
+    var displayTimeLabel: NSTextField!
+    var lA: NSTextField!
+    var button: NSButton!
+    
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        
+        self.lA = self.subviews[2] as! NSTextField
+        self.button = self.subviews[3] as! NSButton
+        self.displayTimeLabel = self.subviews[4] as! NSTextField
+        
+        self.button.target = self
+        self.button.action = #selector(self.toggleSleep(_:))
+    }
+    
+    func MBActivity(_ note: Notification) {
+        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        
+        switch msg! {
+        case .Start:
+            DispatchQueue.main.async {
+                self.start()
+            }
+        case .Stop:
+            self.stop()
+        }
+    }
+    
     
     @IBAction func toggleSleep(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
@@ -89,16 +115,14 @@ class SleepHandler: NSObject, WYDoing {
                 contents = try NSString(contentsOf: url, usedEncoding: nil)
                 lA.objectValue = Date()
                 Ran = 0
-                print(contents)
             } catch {
                 // contents could not be loaded
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Sleeping", lenght: String(Ran), start: String(StartedAt)))
-                print("// contents could not be loaded")
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
         } else {
-            print("Something isnt right")
+            // Something isnt right
         }
     }
     
@@ -109,7 +133,7 @@ class SleepHandler: NSObject, WYDoing {
         isActive = false
         Ran = StopAt - StartedAt
         updateData()
-        print("Timer ran for \(Ran) seconds")
+        self.button.state = NSOffState
     }
     
     func isAlmost12() {
@@ -136,6 +160,7 @@ class SleepHandler: NSObject, WYDoing {
         startTime = Date.timeIntervalSinceReferenceDate
         StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
+        self.button.state = NSOnState
     }
     
     func WYDupload() throws {

@@ -53,7 +53,7 @@ class TableController: NSObject, NSTableViewDataSource {
         case LEADERBOARD
         case MY_TOP10_WEEK
         case MY_TOP10_MONTH
-        
+        case MB_LOADER
     }
 }
 

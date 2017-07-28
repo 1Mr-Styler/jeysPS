@@ -13,7 +13,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <view wantsLayer="YES" id="Ci0-iK-ZMA">
+        <view wantsLayer="YES" id="Ci0-iK-ZMA" customClass="Studying" customModule="JPS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -60,9 +60,6 @@
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
-                    <connections>
-                        <action selector="toggleStudy:" target="MIw-aO-ncM" id="DZt-xd-gHp"/>
-                    </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esv-tI-Zjp">
                     <rect key="frame" x="155" y="158" width="171" height="44"/>
@@ -91,11 +88,5 @@
                 <constraint firstItem="Esv-tI-Zjp" firstAttribute="centerX" secondItem="lHF-Am-a7z" secondAttribute="centerX" id="ydD-hN-WT2"/>
             </constraints>
         </view>
-        <customObject id="MIw-aO-ncM" customClass="Studying" customModule="JPS" customModuleProvider="target">
-            <connections>
-                <outlet property="displayTimeLabel" destination="Esv-tI-Zjp" id="e4F-yv-Amw"/>
-                <outlet property="lA" destination="15c-hc-vrv" id="cAd-JO-dBf"/>
-            </connections>
-        </customObject>
     </objects>
 </document>
