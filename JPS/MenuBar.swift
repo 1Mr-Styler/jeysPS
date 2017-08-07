@@ -45,7 +45,7 @@ class MenuBar: NSObject {
         if self.popover.isShown {
             self.hide(sender)
         } else {
-//            print(popover.contentViewController?.view.subviews)
+            
             let MBmv = popover.contentViewController?.view.subviews[3] as? MBmainView
             
             MBmv?.loadData()

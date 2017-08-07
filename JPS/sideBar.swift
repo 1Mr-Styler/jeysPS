@@ -40,9 +40,9 @@ class sideBar: NSViewController {
         case .LEADERBOARD:
             detailView?.push(ViewController(nibName: "leaderboard", bundle: nil)!, tag: 3, isActivity: false)
         case .MY_TOP10_WEEK:
-            print("K")
+            detailView?.push(ViewController(nibName: "TopWeek", bundle: nil)!, tag: 4, isActivity: false)
         case .MY_TOP10_MONTH:
-            print("J")
+            detailView?.push(ViewController(nibName: "TopMonth", bundle: nil)!, tag: 5, isActivity: false)
         case .MB_LOADER:            
             let info = note.userInfo?["MB_INFO"] as! String
             let acViewCon = JVc.tagManager[0] as! AcViewCon

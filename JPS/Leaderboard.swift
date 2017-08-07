@@ -21,12 +21,32 @@ class Leaderboard: NSObject, NSTableViewDataSource {
                 let jsond = JSON(data: ldb!)
                 
                 for rank in jsond.array! {
-                    print(rank)
+                    
                     let yestdy = rank["yesterday"]["rank"].string ?? "N/A"
                     let today = rank["today"]["rank"].string ?? "N/A"
                     let peak = rank["today"]["peak"].string ?? "N/A"
-                    let jps = rank["today"]["jps"].string ?? "N/A"
-                    myRay.append(Leaderboard_Tabler(rank["user"].string!, today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: "\(jps)%"))
+                    var jps = rank["today"]["jps"].string ?? "N/A"
+                    if jps != "N/A"{
+                     jps = "\(String(format: "%.2f", ceil(Double(jps)!*100)/100))%"
+                    }
+                    
+                    let image: NSImage
+                    var prev = rank["today"]["prev"].intValue
+                    if prev == 0 {
+                        prev = rank["today"]["rank"].intValue + 1
+                    }
+                    
+                    switch rank["today"]["rank"].intValue {
+                    case let x where x < prev:
+                        image = NSImage.init(named: "Green_Arrow_Up")!
+                    case let x where x > prev:
+                        image = NSImage.init(named: "Red_Arrow_Down")!
+                    default:
+                        image = NSImage.init(named: "left_right")!
+                    
+                    }
+                    
+                    myRay.append(Leaderboard_Tabler(rank["user"].string!, today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: jps, image: image))
                 }
             } catch {
                 // contents could not be loaded
@@ -62,12 +82,14 @@ class Leaderboard_Tabler: NSObject {
     var today : String
     var username : String
     var yesterday : String
+    var image : NSImage
     
-    init(_ username: String, today: String, yesterday: String, peak: String, jps: String) {
+    init(_ username: String, today: String, yesterday: String, peak: String, jps: String, image: NSImage) {
         self.username = username
         self.today = today
         self.yesterday = yesterday
         self.peak = peak
         self.jps = jps
+        self.image = image
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -149,6 +149,14 @@
                                                             <binding destination="JXH-PY-Zao" name="value" keyPath="objectValue.jps" id="3Xu-JN-aLs"/>
                                                         </connections>
                                                     </textField>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xza-kT-KeK">
+                                                        <rect key="frame" x="414" y="21" width="23" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Red_Arrow_Down" id="v5l-Mg-yLT"/>
+                                                        <connections>
+                                                            <binding destination="JXH-PY-Zao" name="value" keyPath="objectValue.image" id="aZ8-Vz-cr9"/>
+                                                        </connections>
+                                                    </imageView>
                                                 </subviews>
                                             </tableCellView>
                                         </prototypeCellViews>
@@ -187,9 +195,9 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-fZ-FJX">
-                            <rect key="frame" x="147" y="3" width="187" height="30"/>
+                            <rect key="frame" x="143" y="3" width="195" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="JPS Leaderboad" id="6Zj-rs-Glg">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="JPS Leaderboard" id="6Zj-rs-Glg">
                                 <font key="font" metaFont="system" size="25"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -204,6 +212,7 @@
     </objects>
     <resources>
         <image name="NSRefreshFreestandingTemplate" width="14" height="14"/>
+        <image name="Red_Arrow_Down" width="100" height="100"/>
         <image name="dummy" width="100" height="100"/>
     </resources>
 </document>

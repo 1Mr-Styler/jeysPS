@@ -19,6 +19,9 @@ class WorkingClass: NSView, WYDoing {
     var contents: NSString = ""
     
     
+    var appDeli : AppDelegate!
+    var MBVC: MenuBarVC!
+    
     var displayTimeLabel: NSTextField!
     var lA: NSTextField!
     var button: NSButton!
@@ -31,7 +34,10 @@ class WorkingClass: NSView, WYDoing {
         self.displayTimeLabel = self.subviews[4] as! NSTextField
         
         self.button.target = self
-        self.button.action = #selector(self.toggleWork(_:))
+        self.button.action = #selector(self.toggle(_:))
+        
+        self.appDeli = NSApplication.shared().delegate as! AppDelegate
+        
     }
     
     func MBActivity(_ note: Notification) {
@@ -47,7 +53,7 @@ class WorkingClass: NSView, WYDoing {
         }
     }
     
-    func toggleWork(_ sender: AnyObject) {
+    func toggle(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
             userHandler.activeClass = "WorkingClass"
         }
@@ -105,7 +111,6 @@ class WorkingClass: NSView, WYDoing {
     }
     
     func updateData() {
-        Swift.print(Ran)
         if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0") {
             do {
                 try WYDupload()
@@ -132,7 +137,6 @@ class WorkingClass: NSView, WYDoing {
         Ran = StopAt - StartedAt
         updateData()
         button.state = NSOffState
-        Swift.print("Timer ran for \(Ran) seconds")
     }
     
     func isAlmost12() {

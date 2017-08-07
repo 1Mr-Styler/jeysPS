@@ -12,10 +12,14 @@
 		660451961EE829E30046828C /* work.png in Resources */ = {isa = PBXBuildFile; fileRef = 660451941EE829E30046828C /* work.png */; };
 		660451971EE829E30046828C /* sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 660451951EE829E30046828C /* sleep.png */; };
 		660451991EE82B880046828C /* AcViewCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660451981EE82B880046828C /* AcViewCon.swift */; };
+		660B34DF1F376D72003E52A1 /* TopWeek.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B34DE1F376D72003E52A1 /* TopWeek.xib */; };
 		66134A9C1F20B5B900A891DA /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66134A981F20B5B900A891DA /* Main.xib */; };
 		66134A9D1F20B5B900A891DA /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66134A991F20B5B900A891DA /* MenuBar.swift */; };
 		66134A9E1F20B5B900A891DA /* MenuBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66134A9A1F20B5B900A891DA /* MenuBarVC.swift */; };
 		66134A9F1F20B5B900A891DA /* EventMonitoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66134A9B1F20B5B900A891DA /* EventMonitoring.swift */; };
+		661616FD1F3853BF007A3443 /* Top10Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661616FC1F3853BF007A3443 /* Top10Week.swift */; };
+		661616FF1F3860F7007A3443 /* TopMonth.xib in Resources */ = {isa = PBXBuildFile; fileRef = 661616FE1F3860F7007A3443 /* TopMonth.xib */; };
+		661617011F386158007A3443 /* Top10Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661617001F386158007A3443 /* Top10Month.swift */; };
 		663FB5EA1EA8BFE500426126 /* LogOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5E91EA8BFE500426126 /* LogOut.xib */; };
 		663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */; };
 		6654E4C81EF65452003608E9 /* inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C71EF65452003608E9 /* inactive.png */; };
@@ -101,10 +105,14 @@
 		660451941EE829E30046828C /* work.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = work.png; sourceTree = "<group>"; };
 		660451951EE829E30046828C /* sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep.png; sourceTree = "<group>"; };
 		660451981EE82B880046828C /* AcViewCon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcViewCon.swift; sourceTree = "<group>"; };
+		660B34DE1F376D72003E52A1 /* TopWeek.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopWeek.xib; sourceTree = "<group>"; };
 		66134A981F20B5B900A891DA /* Main.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
 		66134A991F20B5B900A891DA /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		66134A9A1F20B5B900A891DA /* MenuBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarVC.swift; sourceTree = "<group>"; };
 		66134A9B1F20B5B900A891DA /* EventMonitoring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitoring.swift; sourceTree = "<group>"; };
+		661616FC1F3853BF007A3443 /* Top10Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top10Week.swift; sourceTree = "<group>"; };
+		661616FE1F3860F7007A3443 /* TopMonth.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopMonth.xib; sourceTree = "<group>"; };
+		661617001F386158007A3443 /* Top10Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top10Month.swift; sourceTree = "<group>"; };
 		663FB5E91EA8BFE500426126 /* LogOut.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogOut.xib; sourceTree = "<group>"; };
 		663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit-button-icon-18.png"; sourceTree = "<group>"; };
 		6654E4C71EF65452003608E9 /* inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactive.png; sourceTree = "<group>"; };
@@ -372,6 +380,8 @@
 				66BB826E1EDF0ED3001157F6 /* Juveni.swift */,
 				660451981EE82B880046828C /* AcViewCon.swift */,
 				66EE5DA21F1CF5E70025DA0E /* Leaderboard.swift */,
+				661616FC1F3853BF007A3443 /* Top10Week.swift */,
+				661617001F386158007A3443 /* Top10Month.swift */,
 			);
 			name = SplitController;
 			sourceTree = "<group>";
@@ -385,6 +395,8 @@
 				66BB827A1EDF1156001157F6 /* detail.xib */,
 				660451921EE828770046828C /* Activity.xib */,
 				66EE5D9C1F1CBF4A0025DA0E /* leaderboard.xib */,
+				660B34DE1F376D72003E52A1 /* TopWeek.xib */,
+				661616FE1F3860F7007A3443 /* TopMonth.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -546,6 +558,7 @@
 				66EE5D9F1F1CC1560025DA0E /* dummy.png in Resources */,
 				66C595881F2206B400177506 /* mbdata.json in Resources */,
 				66BB82891EDF11AF001157F6 /* yearly.png in Resources */,
+				661616FF1F3860F7007A3443 /* TopMonth.xib in Resources */,
 				660451931EE828770046828C /* Activity.xib in Resources */,
 				66EE5D9D1F1CBF4A0025DA0E /* leaderboard.xib in Resources */,
 				66BB82921EDF15AD001157F6 /* Studying.xib in Resources */,
@@ -560,6 +573,7 @@
 				660451961EE829E30046828C /* work.png in Resources */,
 				66BB828F1EDF15AD001157F6 /* Working.xib in Resources */,
 				66BB82901EDF15AD001157F6 /* Inactive.xib in Resources */,
+				660B34DF1F376D72003E52A1 /* TopWeek.xib in Resources */,
 				66BB82881EDF11AF001157F6 /* trophy.png in Resources */,
 				66BB827B1EDF1156001157F6 /* sideBar.xib in Resources */,
 				66EF45711E96AA7300DFFFC7 /* Updates.xib in Resources */,
@@ -762,6 +776,8 @@
 				668CD4241EB215100047AAEF /* about.swift in Sources */,
 				669CD5521E885F6400A0E9FB /* Studying.swift in Sources */,
 				6687A1101E830580004554AE /* AppDelegate.swift in Sources */,
+				661616FD1F3853BF007A3443 /* Top10Week.swift in Sources */,
+				661617011F386158007A3443 /* Top10Month.swift in Sources */,
 				66EF456E1E96A81D00DFFFC7 /* ViewController.swift in Sources */,
 				66D4AC471E85AA34007B340C /* userHandler.swift in Sources */,
 			);

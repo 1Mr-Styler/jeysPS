@@ -35,7 +35,7 @@ class SleepHandler: NSView, WYDoing {
         self.displayTimeLabel = self.subviews[4] as! NSTextField
         
         self.button.target = self
-        self.button.action = #selector(self.toggleSleep(_:))
+        self.button.action = #selector(self.toggle(_:))
     }
     
     func MBActivity(_ note: Notification) {
@@ -52,7 +52,7 @@ class SleepHandler: NSView, WYDoing {
     }
     
     
-    @IBAction func toggleSleep(_ sender: AnyObject) {
+    @IBAction func toggle(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
             userHandler.activeClass = "SleepHandler"
         }
