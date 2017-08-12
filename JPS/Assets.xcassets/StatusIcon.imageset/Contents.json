@@ -1,15 +1,12 @@
 {
   "images" : [
     {
-      "idiom" : "mac"
-    },
-    {
       "idiom" : "mac",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "StatusIcon.png",
+      "filename" : "temp_logo.png",
       "scale" : "2x"
     }
   ],
