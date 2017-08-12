@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-JPS.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>6C9668FD842850A3AF31A234133F46B0</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +42,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8C558D67DC4F1B1FA9DEDEB89ED6BD5D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9ED1BD8A59F70EA7FC5526022485A5F8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BBBD8953D6F931ABDD1749CFB687D291</key>
+		<key>DE2996D4EC55AFA6466F4FDEA453F317</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Alamofire
 
 class Inactive: NSView, WYDoing {
     var timer = Timer()
@@ -105,22 +106,21 @@ class Inactive: NSView, WYDoing {
     }
     
     func updateData() {
-        if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(Ran)&ph=0&wh=0&ach=0") {
-            do {
-                try WYDupload()
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                lA.objectValue = Date()
-                Ran = 0
-                Swift.print(contents)
-            } catch {
-                // contents could not be loaded
+        
+        Alamofire.request("http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(Ran)&ph=0&wh=0&ach=0").responseString { (response) in
+            
+            if response.result.value == "done" {
+                
+                try? self.WYDupload()
+                self.lA.objectValue = Date()
+                self.Ran = 0
+                
+            } else {
                 let uH = userHandler()
-                uH.couldntUpload(Savings(activity: "Inactive", lenght: String(Ran), start: String(StartedAt)))
-                Swift.print("// contents could not be loaded")
+                uH.couldntUpload(Savings(activity: "Inactive", lenght: String(self.Ran), start: String(self.StartedAt)))
+                
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
-        } else {
-            Swift.print("Something isnt right")
         }
     }
     

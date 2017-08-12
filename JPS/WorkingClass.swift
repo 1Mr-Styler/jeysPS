@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Alamofire
 
 class WorkingClass: NSView, WYDoing {
     var timer = Timer()
@@ -111,22 +112,23 @@ class WorkingClass: NSView, WYDoing {
     }
     
     func updateData() {
-        if let url = URL(string: "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0") {
-            do {
-                try WYDupload()
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                lA.objectValue = Date()
-                Ran = 0
-            } catch {
-                // contents could not be loaded
+        
+        Alamofire.request("http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0").responseString { (response) in
+        
+            if response.result.value == "done" {
+                
+                self.WYDupload()
+                self.lA.objectValue = Date()
+                self.Ran = 0
+                
+            } else {
                 let uH = userHandler()
-                uH.couldntUpload(Savings(activity: "Working", lenght: String(Ran), start: String(StartedAt)))
+                uH.couldntUpload(Savings(activity: "Working", lenght: String(self.Ran), start: String(self.StartedAt)))
                 
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
-        } else {
-            // Something isnt right
         }
+        
     }
     
     func stop() {
@@ -166,15 +168,9 @@ class WorkingClass: NSView, WYDoing {
         button.state = NSOnState
     }
 
-    func WYDupload() throws {
-        if let url = URL(string:
-            "http://jps.lyshnia.com/apr.php?api_hash=\(userHandler.cdc)&to=\(Ran)&from=\(StartedAt)&activity=working&wyd") {
-            do {
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                if contents != "done" {
-                    throw JPSServer.UNREACHABLE
-                }
-            }
+    func WYDupload() {
+        Alamofire.request("http://jps.lyshnia.com/apr.php?api_hash=\(userHandler.cdc)&to=\(Ran)&from=\(StartedAt)&activity=working&wyd").responseString { (response)  in
+            
         }
     }
     
