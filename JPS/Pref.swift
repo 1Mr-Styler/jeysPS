@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Alamofire
 
 class Pref: NSWindowController {
     
@@ -141,16 +142,16 @@ class Pref: NSWindowController {
                 
                 switch cObj[0] {
                 case "Sleeping":
-                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=\(cObj[1])&ih=0&ph=0&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=\(cObj[1])&ih=0&ph=0&wh=0&ach=0&ts=\(cObj[2])"
                     del = SleepHandler() as WYDoing
                 case "Working":
-                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(cObj[1])&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(cObj[1])&ach=0&ts=\(cObj[2])"
                     del = WorkingClass() as WYDoing
                 case "Inactive":
-                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(cObj[1])&ph=0&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=\(cObj[1])&ph=0&wh=0&ach=0&ts=\(cObj[2])"
                     del = Inactive() as WYDoing
                 case "Studying":
-                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=\(cObj[1])&wh=0&ach=0"
+                    uRL = "http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=\(cObj[1])&wh=0&ach=0&ts=\(cObj[2])"
                     del = Studying() as WYDoing
                 default:
                     // It'll never fall into here so everything here
@@ -160,20 +161,20 @@ class Pref: NSWindowController {
                     break
                 }
                 
-                if let url = URL(string: uRL) {
-                    do {
-                        try del.WYDupload(cdc: userHandler.cdc, from: Int(cObj[1])!, to: Int(cObj[2])!)
-                        _ = try NSString(contentsOf: url, usedEncoding: nil)
+                Alamofire.request(uRL).responseString { (response) in
+                    
+                    if response.result.value == "done" {
+                        
+                        try? del.WYDupload(cdc: userHandler.cdc, from: Int(cObj[2])!, to: Int(cObj[1])!)
+                        
                         OBJ.removeObject(forKey: keys[i])
                         
                         userHandler.createAlert("Successfully Uploaded", txt: "Activity: \(cObj[0]) at \(Date.init(timeIntervalSince1970: Double(cObj[2])!))")
-                        _ = uH.arrayOfKeys("popKorn \(keys[i])")
-                    } catch {
-                        // contents could not be loaded
-                       
+                        _ = self.uH.arrayOfKeys("popKorn \(keys[i])")
+                        
+                    } else {
+                        userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
                     }
-                } else {
-                    print("Something isnt right")
                 }
             }
         }

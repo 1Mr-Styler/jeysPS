@@ -113,7 +113,7 @@ class WorkingClass: NSView, WYDoing {
     
     func updateData() {
         
-        Alamofire.request("http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0").responseString { (response) in
+        Alamofire.request("http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=0&wh=\(Ran)&ach=0&ts=\(StartedAt + 6)").responseString { (response) in
         
             if response.result.value == "done" {
                 
@@ -122,8 +122,9 @@ class WorkingClass: NSView, WYDoing {
                 self.Ran = 0
                 
             } else {
+
                 let uH = userHandler()
-                uH.couldntUpload(Savings(activity: "Working", lenght: String(self.Ran), start: String(self.StartedAt)))
+                uH.couldntUpload(Savings(activity: "Working", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
                 
                 userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
             }
