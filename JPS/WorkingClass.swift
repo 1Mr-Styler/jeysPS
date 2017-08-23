@@ -176,14 +176,8 @@ class WorkingClass: NSView, WYDoing {
     }
     
     func WYDupload(cdc: String, from: Int, to: Int) throws {
-        if let url = URL(string:
-            "http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=working&wyd") {
-            do {
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                if contents != "done" {
-                    throw JPSServer.UNREACHABLE
-                }
-            }
+        Alamofire.request("http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=working&wyd").responseString { (response) in
+            
         }
     }
 }

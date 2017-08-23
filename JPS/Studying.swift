@@ -168,8 +168,6 @@ class Studying: NSView, WYDoing {
     func WYDupload(cdc: String, from: Int, to: Int) throws {
         Alamofire.request("http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=studying&wyd").responseString { (response) in
             
-            Swift.print("http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=studying&wyd")
-            Swift.print(response.result.value!)
         }
     }
 

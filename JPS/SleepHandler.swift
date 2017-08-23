@@ -167,26 +167,14 @@ class SleepHandler: NSView, WYDoing {
     }
     
     func WYDupload() throws {
-        if let url = URL(string:
-            "http://jps.lyshnia.com/apr.php?api_hash=\(userHandler.cdc)&to=\(Ran)&from=\(StartedAt)&activity=sleeping&wyd") {
-            do {
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                if contents != "done" {
-                    throw JPSServer.UNREACHABLE
-                }
-            }
+        Alamofire.request("http://jps.lyshnia.com/apr.php?api_hash=\(userHandler.cdc)&to=\(Ran)&from=\(StartedAt)&activity=sleeping&wyd").responseString { (response)  in
+            
         }
     }
     
     func WYDupload(cdc: String, from: Int, to: Int) throws {
-        if let url = URL(string:
-            "http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=sleeping&wyd") {
-            do {
-                contents = try NSString(contentsOf: url, usedEncoding: nil)
-                if contents != "done" {
-                    throw JPSServer.UNREACHABLE
-                }
-            }
+        Alamofire.request("http://jps.lyshnia.com/apr.php?api_hash=\(cdc)&to=\(to)&from=\(from)&activity=sleeping&wyd").responseString { (response) in
+            
         }
     }
 
