@@ -19,6 +19,7 @@ class Inactive: NSView, WYDoing {
     var lastUpdated = 0
     var contents: NSString = ""
     
+    var appDeli : AppDelegate!
     
     var displayTimeLabel: NSTextField!
     var lA: NSTextField!
@@ -33,6 +34,8 @@ class Inactive: NSView, WYDoing {
         
         self.button.target = self
         self.button.action = #selector(self.toggleInactivity(_:))
+        
+        self.appDeli = NSApplication.shared().delegate as! AppDelegate
     }
     
     func MBActivity(_ note: Notification) {
@@ -49,6 +52,8 @@ class Inactive: NSView, WYDoing {
                 self.stop(upload: false)
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Inactive", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            } else {
+                self.stop()
             }
             
         }
@@ -119,6 +124,10 @@ class Inactive: NSView, WYDoing {
                 
                 try? self.WYDupload()
                 self.lA.objectValue = Date()
+                // update menubar
+                let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
+                mbLa.stringValue = self.lA.stringValue
+
                 self.Ran = 0
                 
             } else {

@@ -19,6 +19,7 @@ class Studying: NSView, WYDoing {
     var lastUpdated = 0
     var contents: NSString = ""
     
+    var appDeli : AppDelegate!
     
     var displayTimeLabel: NSTextField!
     var lA: NSTextField!
@@ -33,6 +34,8 @@ class Studying: NSView, WYDoing {
         
         self.button.target = self
         self.button.action = #selector(self.toggle(_:))
+        
+        self.appDeli = NSApplication.shared().delegate as! AppDelegate
     }
     
     func MBActivity(_ note: Notification) {
@@ -49,6 +52,8 @@ class Studying: NSView, WYDoing {
                 self.stop(upload: false)
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Studying", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            } else {
+                self.stop()
             }
             
         }
@@ -112,13 +117,16 @@ class Studying: NSView, WYDoing {
     }
     
     func updateData() {
-        
         Alamofire.request("http://jps.lyshnia.com/apr.php?cdc=\(userHandler.cdc)&sh=0&ih=0&ph=\(Ran)&wh=0&ach=0&ts=\(StartedAt + 6)").responseString { (response) in
             
             if response.result.value == "done" {
                 
                 try? self.WYDupload()
                 self.lA.objectValue = Date()
+                // update menubar
+                let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
+                mbLa.stringValue = self.lA.stringValue
+
                 self.Ran = 0
                 
             } else {

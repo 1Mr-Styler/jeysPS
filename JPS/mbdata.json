@@ -2,22 +2,26 @@
     "Working": {
         "previous": 0,
         "current": 0,
-        "total": 0
+        "total": 0,
+        "LastRun": 0
     },
     "Sleeping": {
         "previous": 0,
         "current": 0,
-        "total": 0
+        "total": 0,
+        "LastRun": 0
     },
     "Inactive": {
         "previous": 0,
         "current": 0,
-        "total": 0
+        "total": 0,
+        "LastRun": 0
     },
     "Studying": {
         "previous": 0,
         "current": 0,
-        "total": 0
+        "total": 0,
+        "LastRun": 0
     },
     "LastRun": 0
 

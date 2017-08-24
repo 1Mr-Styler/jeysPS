@@ -103,7 +103,8 @@ class MenuBarVC: NSViewController {
     }
     
     func quitApp(_ sender: AnyObject) {
-        exit(0)
+        appDeli.menubar?.statusItem.isEnabled = false
+        NSApplication.shared().terminate(self)
     }
     
     @IBAction func toggleJPS(_ sender: Any) {

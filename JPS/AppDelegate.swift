@@ -58,16 +58,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case "Working":
                 NotificationCenter.default.post(name: .MB_ACTIVITY_WORKING, object: nil, userInfo: ["V": MB_Activity.Stop, "A": "save"])
             case "Studying":
-                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Stop])
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Stop, "A": "save"])
             default:
-                NotificationCenter.default.post(name: .MB_ACTIVITY_INACTIVE, object: nil, userInfo: ["V": MB_Activity.Stop])
+                NotificationCenter.default.post(name: .MB_ACTIVITY_INACTIVE, object: nil, userInfo: ["V": MB_Activity.Stop, "A": "save"])
             }
         }
     }
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
         // Cancel terminate if pref set
-        if uH.hasMenuBar {
+        
+        if (self.menubar?.statusItem.isEnabled)! {
             self.window.close()
             NSApplication.shared().setActivationPolicy(NSApplicationActivationPolicy.accessory)
             return NSApplicationTerminateReply.terminateCancel

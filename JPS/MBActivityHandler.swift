@@ -111,6 +111,7 @@ class MBActivityData: NSObject {
         json?[self.activity]["previous"].intValue = self.previous!
         json?[self.activity]["current"].intValue = self.current!
         
+        json?[self.activity]["LastRun"].doubleValue = Date().timeIntervalSince1970
         json?["LastRun"].doubleValue = Date().timeIntervalSince1970
         
         let rep = json?.rawString([.castNilToNSNull: true])
@@ -131,7 +132,7 @@ class MBActivityData: NSObject {
         self.current = json?[self.activity]["current"].intValue
         
         // Reset timers to 0 if its a new day
-        let fromLoaded = Date.init(timeIntervalSince1970: (json?["LastRun"].double)!)
+        let fromLoaded = Date.init(timeIntervalSince1970: (json?[self.activity]["LastRun"].double)!)
         let fromNow = Date.init(timeIntervalSince1970: Date().timeIntervalSince1970)
         let form = DateFormatter()
         

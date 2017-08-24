@@ -20,6 +20,8 @@ class SleepHandler: NSView, WYDoing {
     var lastUpdated = 0
     var contents: NSString = ""
     
+    var appDeli : AppDelegate!
+    
     @IBOutlet weak var myView: NSView!
     @IBOutlet weak var myTabView: NSTabViewItem!
     
@@ -37,6 +39,8 @@ class SleepHandler: NSView, WYDoing {
         
         self.button.target = self
         self.button.action = #selector(self.toggle(_:))
+        
+        self.appDeli = NSApplication.shared().delegate as! AppDelegate
     }
     
     func MBActivity(_ note: Notification) {
@@ -53,6 +57,8 @@ class SleepHandler: NSView, WYDoing {
                 self.stop(upload: false)
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Sleeping", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            } else {
+                self.stop()
             }
             
         }
@@ -123,6 +129,12 @@ class SleepHandler: NSView, WYDoing {
                 
                 try? self.WYDupload()
                 self.lA.objectValue = Date()
+                // update menubar
+                DispatchQueue.main.async {
+                    let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
+                    mbLa.stringValue = self.lA.stringValue
+                }
+
                 self.Ran = 0
                 
             } else {

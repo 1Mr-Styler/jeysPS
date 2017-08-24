@@ -55,6 +55,8 @@ class WorkingClass: NSView, WYDoing {
                 self.stop(upload: false)
                 let uH = userHandler()
                 uH.couldntUpload(Savings(activity: "Working", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            } else {
+                self.stop()
             }
 
         }
@@ -125,6 +127,9 @@ class WorkingClass: NSView, WYDoing {
                 
                 self.WYDupload()
                 self.lA.objectValue = Date()
+                // update menubar
+                let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
+                mbLa.stringValue = self.lA.stringValue
                 self.Ran = 0
                 
             } else {

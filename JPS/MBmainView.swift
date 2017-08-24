@@ -19,7 +19,6 @@ class MBmainView: NSView {
         // Drawing code here.
     }
     
-    
     func loadData() {
         bgQueue.addOperation {
             DispatchQueue.main.async {
