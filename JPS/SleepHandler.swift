@@ -40,25 +40,31 @@ class SleepHandler: NSView, WYDoing {
     }
     
     func MBActivity(_ note: Notification) {
-        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        let note = (note.userInfo as! [String: Any])
+        let msg = note["V"] as! MB_Activity
         
-        switch msg! {
+        switch msg {
         case .Start:
             DispatchQueue.main.async {
                 self.start()
             }
         case .Stop:
-            self.stop()
+            if let _ = note["A"] as? String {
+                self.stop(upload: false)
+                let uH = userHandler()
+                uH.couldntUpload(Savings(activity: "Sleeping", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            }
+            
         }
     }
     
     
     @IBAction func toggle(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
-            userHandler.activeClass = "SleepHandler"
+            userHandler.activeClass = "Sleeping"
         }
         
-        if userHandler.activeClass != "SleepHandler" {
+        if userHandler.activeClass != "Sleeping" {
             userHandler.createAlert("Warning!", txt: "Stop previous activity before starting a new one")
             (sender as! NSButton).state = NSOffState
         } else {
@@ -129,13 +135,15 @@ class SleepHandler: NSView, WYDoing {
 
     }
     
-    func stop() {
+    func stop(upload: Bool = true) {
         userHandler.activeClass = ""
         StopAt = Int(Date().timeIntervalSince1970)
         timer.invalidate()
         isActive = false
         Ran = StopAt - StartedAt
-        updateData()
+        if upload {
+            updateData()
+        }
         self.button.state = NSOffState
     }
     

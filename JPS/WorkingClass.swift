@@ -42,24 +42,30 @@ class WorkingClass: NSView, WYDoing {
     }
     
     func MBActivity(_ note: Notification) {
-        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        let note = (note.userInfo as! [String: Any])
+        let msg = note["V"] as! MB_Activity
         
-        switch msg! {
+        switch msg {
         case .Start:
             DispatchQueue.main.async {
                 self.start()
             }
         case .Stop:
-            self.stop()
+            if let _ = note["A"] as? String {
+                self.stop(upload: false)
+                let uH = userHandler()
+                uH.couldntUpload(Savings(activity: "Working", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            }
+
         }
     }
     
     func toggle(_ sender: AnyObject) {
         if userHandler.activeClass.isEmpty {
-            userHandler.activeClass = "WorkingClass"
+            userHandler.activeClass = "Working"
         }
         
-        if userHandler.activeClass != "WorkingClass" {
+        if userHandler.activeClass != "Working" {
             userHandler.createAlert("Warning!", txt: "Stop previous activity before starting a new one")
             (sender as! NSButton).state = NSOffState
         } else {
@@ -132,14 +138,16 @@ class WorkingClass: NSView, WYDoing {
         
     }
     
-    func stop() {
+    func stop(upload: Bool = true) {
         userHandler.activeClass = ""
         StopAt = Int(Date().timeIntervalSince1970)
         timer.invalidate()
         isActive = false
         Ran = StopAt - StartedAt
-        updateData()
-        button.state = NSOffState
+        if upload {
+            updateData()
+        }
+        self.button.state = NSOffState
     }
     
     func isAlmost12() {

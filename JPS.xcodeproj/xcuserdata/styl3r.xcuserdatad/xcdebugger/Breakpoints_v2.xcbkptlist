@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "JPS/AppDelegate.swift"
-            timestampString = "522239470.222952"
+            timestampString = "525277168.808286"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "toggleApp(_:)"
             landmarkType = "7">
          </BreakpointContent>

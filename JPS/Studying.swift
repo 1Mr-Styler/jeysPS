@@ -36,15 +36,21 @@ class Studying: NSView, WYDoing {
     }
     
     func MBActivity(_ note: Notification) {
-        let msg = (note.userInfo as! [String: MB_Activity])["V"]
+        let note = (note.userInfo as! [String: Any])
+        let msg = note["V"] as! MB_Activity
         
-        switch msg! {
+        switch msg {
         case .Start:
             DispatchQueue.main.async {
                 self.start()
             }
         case .Stop:
-            self.stop()
+            if let _ = note["A"] as? String {
+                self.stop(upload: false)
+                let uH = userHandler()
+                uH.couldntUpload(Savings(activity: "Studying", lenght: String(self.Ran), start: String(self.StartedAt + 6)))
+            }
+            
         }
     }
     
@@ -124,13 +130,15 @@ class Studying: NSView, WYDoing {
         }
     }
     
-    func stop() {
+    func stop(upload: Bool = true) {
         userHandler.activeClass = ""
         StopAt = Int(Date().timeIntervalSince1970)
         timer.invalidate()
         isActive = false
         Ran = StopAt - StartedAt
-        updateData()
+        if upload {
+            updateData()
+        }
         self.button.state = NSOffState
     }
     

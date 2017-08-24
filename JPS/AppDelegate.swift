@@ -51,6 +51,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        if !userHandler.activeClass.isEmpty {
+            switch userHandler.activeClass {
+            case "Sleeping":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_SLEEPING, object: nil, userInfo: ["V": MB_Activity.Stop, "A": "save"])
+            case "Working":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_WORKING, object: nil, userInfo: ["V": MB_Activity.Stop, "A": "save"])
+            case "Studying":
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Stop])
+            default:
+                NotificationCenter.default.post(name: .MB_ACTIVITY_INACTIVE, object: nil, userInfo: ["V": MB_Activity.Stop])
+            }
+        }
     }
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
