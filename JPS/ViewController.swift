@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 class ViewController: NSViewController {
 
@@ -83,6 +84,24 @@ class ViewController: NSViewController {
             let inactive = self.view as! Inactive
             inactive.MBActivity(note)
     }
+    
+    @IBOutlet var launchAtLoginCheckbox: NSButton!
+    
+    @IBAction func launchAtLogin(_ sender: NSButton) {
+        let appBundleIdentifier = "com.lyshnia.JPSHelper"
+        let autoLaunch = (launchAtLoginCheckbox.state == NSOnState)
+        if SMLoginItemSetEnabled(appBundleIdentifier as CFString, autoLaunch) {
+            if autoLaunch {
+                NSLog("Successfully add login item.")
+            } else {
+                NSLog("Successfully remove login item.")
+            }
+            
+        } else {
+            NSLog("Failed to add login item.")
+        }
+    }
+    
 }
 
 struct Savings {
