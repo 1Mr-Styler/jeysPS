@@ -174,6 +174,8 @@ class Pref: NSWindowController {
                         userHandler.createAlert("Successfully Uploaded", txt: "Activity: \(cObj[0]) at \(Date.init(timeIntervalSince1970: Double(cObj[2])!))")
                         _ = self.uH.arrayOfKeys("popKorn \(keys[i])")
                         
+                        self.ArrayController.remove(atArrangedObjectIndex: (self.ArrayController.arrangedObjects as! [dataRetro]).count - 1)
+                        
                     } else {
                         userHandler.createAlert("Server Unreachable", txt: "We're having issues uploading your data. Check your internet connection and try again by going to Preferences -> Upload")
                     }
