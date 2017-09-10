@@ -125,8 +125,10 @@ class Inactive: NSView, WYDoing {
                 try? self.WYDupload()
                 self.lA.objectValue = Date()
                 // update menubar
-                let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
-                mbLa.stringValue = self.lA.stringValue
+                if userHandler().hasMenuBar {
+                    let mbLa = self.appDeli.menubar?.popover.contentViewController?.view.subviews[1].subviews[3] as! NSTextField
+                    mbLa.stringValue = self.lA.stringValue
+                }
 
                 self.Ran = 0
                 

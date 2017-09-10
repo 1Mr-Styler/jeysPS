@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
         // Cancel terminate if pref set
         
-        if (self.menubar?.statusItem.isEnabled)! {
+        if uH.hasMenuBar && (self.menubar?.statusItem.isEnabled)! {
             self.window.close()
             NSApplication.shared().setActivationPolicy(NSApplicationActivationPolicy.accessory)
             return NSApplicationTerminateReply.terminateCancel

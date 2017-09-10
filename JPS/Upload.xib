@@ -18,7 +18,7 @@
                 <outlet property="ArrayController" destination="iIq-Io-GH2" id="Kd6-a6-Jxo"/>
             </connections>
         </customObject>
-        <customView autoresizesSubviews="NO" id="c22-O7-iKe">
+        <customView autoresizesSubviews="NO" id="c22-O7-iKe" customClass="UploadView" customModule="JPS" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="480" height="416"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -121,9 +121,9 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9KO-kd-g9m">
-                    <rect key="frame" x="19" y="-2" width="83" height="32"/>
+                    <rect key="frame" x="10" y="4" width="22" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="TempD" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s7J-d6-q2d">
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRemoveTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s7J-d6-q2d">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -144,6 +144,9 @@
                 <constraint firstAttribute="trailing" secondItem="KwL-zP-Iyv" secondAttribute="trailing" id="x2d-1V-XPf"/>
                 <constraint firstItem="KwL-zP-Iyv" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="zid-s5-jEb"/>
             </constraints>
+            <connections>
+                <outlet property="ArraayController" destination="iIq-Io-GH2" id="j8P-C9-hl3"/>
+            </connections>
             <point key="canvasLocation" x="140" y="153"/>
         </customView>
         <arrayController objectClassName="JPS.dataRetro" id="iIq-Io-GH2">
@@ -153,4 +156,7 @@
         </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="HO2-1D-zDr"/>
     </objects>
+    <resources>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+    </resources>
 </document>
