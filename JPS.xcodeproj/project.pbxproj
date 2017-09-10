@@ -1194,6 +1194,7 @@
 				66A848C21F4FFF6600DFADAE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -21,6 +21,8 @@ class Pref: NSWindowController {
     @IBOutlet weak var loggedInAs: NSTextField!
     @IBOutlet weak var since: NSTextField!
     
+    @IBOutlet weak var ArrayController: NSArrayController!
+    
     let uH = userHandler();
     
     let loginView = ViewController(nibName: "LogOut", bundle: nil)!
@@ -285,6 +287,27 @@ class Pref: NSWindowController {
         let newFrame = NSRect(origin: newOrigin, size: contentFrame.size)
         window!.setFrame(newFrame, display: false, animate: true)
     }
+    
+    @IBAction func delItem(_ sender: NSButton) {
+        let table = sender.superview?.subviews[0].subviews[0].subviews[0] as! NSTableView
+        let selectedRow = table.selectedRow
+        
+        let selectedObjectIndexes = ArrayController.arrangedObjects as! [dataRetro]
+        
+        /*********************** Stuff for unsaved data *******************/
+        let keys = uH.arrayOfKeys("") as! [String]
+        
+        if keys.count > 0 {
+            let OBJ = UserDefaults.standard
+            OBJ.removeObject(forKey: keys[selectedObjectIndexes[selectedRow].no - 1])
+            _ = self.uH.arrayOfKeys("popKorn \(keys[selectedObjectIndexes[selectedRow].no - 1])")
+
+        }
+        /*********************** Stuff for unsaved data *******************/
+        
+        ArrayController.remove(atArrangedObjectIndex: selectedRow)
+    }
+    
 }
 
 enum LoginGuy {
