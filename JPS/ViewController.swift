@@ -73,24 +73,39 @@ class ViewController: NSViewController {
     }
     
     func forWork(_ note: Notification) {
-        let workingClass = self.view as! WorkingClass
-        workingClass.MBActivity(note)
+        let noteInfo = (note.userInfo as! [String: Any])
         
+        if !noteInfo.keys.contains("FMB") {
+            let workingClass = self.view as! WorkingClass
+            workingClass.MBActivity(note)
+        }
     }
     
     func forSleep(_ note: Notification) {
+        let noteInfo = (note.userInfo as! [String: Any])
+        
+        if !noteInfo.keys.contains("FMB") {
             let sleeper = self.view as! SleepHandler
             sleeper.MBActivity(note)
+        }
     }
     
     func forStudy(_ note: Notification) {
+        let noteInfo = (note.userInfo as! [String: Any])
+        
+        if !noteInfo.keys.contains("FMB") {
             let study = self.view as! Studying
             study.MBActivity(note)
+        }
     }
     
     func forInactive(_ note: Notification) {
+        let noteInfo = (note.userInfo as! [String: Any])
+        
+        if !noteInfo.keys.contains("FMB") {
             let inactive = self.view as! Inactive
             inactive.MBActivity(note)
+        }
     }
     
     @IBOutlet var launchAtLoginCheckbox: NSButton!

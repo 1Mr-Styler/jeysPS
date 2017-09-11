@@ -70,8 +70,10 @@ class Studying: NSView, WYDoing {
         } else {
             if !isActive {
                 self.start()
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Start, "FMB": false, "ACT": "Studying"])
             } else {
                 self.stop()
+                NotificationCenter.default.post(name: .MB_ACTIVITY_STUDYING, object: nil, userInfo: ["V": MB_Activity.Stop, "FMB": false, "ACT": "Studying"])
             }
         }
     }

@@ -81,6 +81,49 @@ class MenuBarVC: NSViewController {
         (self.view.subviews[3] as! MBmainView).loadData()
         self.activityLoad(actvWrking)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.forWork(_:)), name: .MB_ACTIVITY_WORKING, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.forWork(_:)), name: .MB_ACTIVITY_SLEEPING, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.forWork(_:)), name: .MB_ACTIVITY_INACTIVE, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.forWork(_:)), name: .MB_ACTIVITY_STUDYING, object: nil)
+        
+    }
+    
+    func forWork(_ note: Notification) {
+        let noteInfo = (note.userInfo as! [String: Any])
+        
+        if noteInfo.keys.contains("FMB") {
+            let msg = noteInfo["V"] as! MB_Activity
+            let btn =  self.view.subviews[2].subviews[5] as! NSButton
+            
+            if self.currentActivity.stringValue != "Nothing"
+            {self.prevActivity.stringValue = self.currentActivity.stringValue}
+            
+            /** Load the activity */
+            MBaH.load()
+            self.mainTitle.stringValue = noteInfo["ACT"] as! String
+            self.currently.stringValue = MBaH.toHMS(seconds: MBaH.current)
+            
+            self.view.subviews[2].subviews[0].isHidden = false
+            self.view.subviews[2].subviews[6].isHidden = true
+            btn.isEnabled = true
+            
+            /** Load the activity */
+            
+            
+            switch msg {
+            case .Start:
+                btn.state = NSOnState
+                self.start()
+                self.currentActivity.stringValue = noteInfo["ACT"] as! String
+            case .Stop:
+                btn.state = NSOffState
+                self.stop()
+                self.currentActivity.stringValue = "Nothing"
+            }
+        }
     }
     
     @IBAction func settngs(_ sender: Any) {
@@ -290,4 +333,8 @@ class MenuBarVC: NSViewController {
         StartedAt = Int(Date().timeIntervalSince1970)
         isActive = true
     }
+}
+
+extension Notification.Name {
+    static let MB_MA_ACTIVITY_CHG = Notification.Name("mbMaActChange")
 }

@@ -76,8 +76,10 @@ class SleepHandler: NSView, WYDoing {
         } else {
             if !isActive {
                 self.start()
+                NotificationCenter.default.post(name: .MB_ACTIVITY_SLEEPING, object: nil, userInfo: ["V": MB_Activity.Start, "FMB": false, "ACT": "Sleeping"])
             } else {
                 self.stop()
+                NotificationCenter.default.post(name: .MB_ACTIVITY_SLEEPING, object: nil, userInfo: ["V": MB_Activity.Stop, "FMB": false, "ACT": "Sleeping"])
             }
         }
     }
