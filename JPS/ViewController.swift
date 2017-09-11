@@ -24,7 +24,8 @@ class ViewController: NSViewController {
             enableMenu.state = UserDefaults.standard.integer(forKey: "showMB")
         }
         
-        if self.nibName == "leaderboard" {
+        let sidebarNibs: [String] = ["leaderboard", "TopWeek", "TopMonth"]
+        if sidebarNibs.contains(self.nibName!)  {
             //Gif laoder         
             let loadingGif = self.view.subviews[2] as! NSImageView
             loadingGif.canDrawSubviewsIntoLayer = true

@@ -8,19 +8,22 @@
 
 import Cocoa
 import SwiftyJSON
+import Alamofire
 
 class Top10Week: NSObject, NSTableViewDataSource {
 
     var myRay : [TW_Tabler] = []
     let uH = userHandler()
+    @IBOutlet weak var table: NSTableView!
     
     override init() {
-        let url = URL(string: "https://jps.lyshnia.com/api/top10.php?cdc=\(userHandler.cdc)&t=weekly")
+        super.init()
         
         if uH.isLoggedIn() {
-            do {
-                let contents = try String.init(contentsOf: url!)
-                let ldb = contents.data(using: .utf8, allowLossyConversion: false)
+            Alamofire.request("https://jps.lyshnia.com/api/top10.php?cdc=\(userHandler.cdc)&t=weekly").responseString { (response) in
+            
+                let contents = response.result.value
+                let ldb = contents?.data(using: .utf8, allowLossyConversion: false)
                 let jsond = JSON(data: ldb!)
                 
                 var i: Int = 1
@@ -33,15 +36,18 @@ class Top10Week: NSObject, NSTableViewDataSource {
                     let inactive_study =
                     "\(String(format: "%.2f", ceil(record["ih"].double!*100)/100)) / \(String(format: "%.2f", ceil(record["ph"].double!*100)/100)) hours"
                     
-                    myRay.append(TW_Tabler(jps: jps, week: week, work: work, sleep: sleep, inactive_study: inactive_study, num: i))
+                    self.myRay.append(TW_Tabler(jps: jps, week: week, work: work, sleep: sleep, inactive_study: inactive_study, num: i))
                     i += 1
                 }
-            } catch {
-                // contents could not be loaded
-                print("// contents could not be loaded")
+                
+                self.table.reloadData()
+                DispatchQueue.main.async {
+                    self.table.superview?.superview?.superview?.subviews[2].isHidden = true
+                }
+
             }
         } else {
-            print("Something isnt right")
+            print("You need to be logged in")
         }
     }
     
