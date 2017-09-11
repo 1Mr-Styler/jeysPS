@@ -8,52 +8,55 @@
 
 import Cocoa
 import SwiftyJSON
+import Alamofire
 
 class Leaderboard: NSObject, NSTableViewDataSource {
     var myRay : [Leaderboard_Tabler] = []
+    @IBOutlet weak var table: NSTableView!
     
     override init() {
+        super.init()
         
-        if let url = URL(string: "https://jps.lyshnia.com/api/ranking.php") {
-            do {
-                let contents = try String.init(contentsOf: url)
-                let ldb = contents.data(using: .utf8, allowLossyConversion: false)
-                let jsond = JSON(data: ldb!)
+        Alamofire.request("https://jps.lyshnia.com/api/ranking.php").responseString { (response) in
+            
+            let contents = response.result.value
+            let ldb = contents?.data(using: .utf8, allowLossyConversion: false)
+            let jsond = JSON(data: ldb!)
+            
+            for rank in jsond.array! {
                 
-                for rank in jsond.array! {
-                    
-                    let yestdy = rank["yesterday"]["rank"].string ?? "N/A"
-                    let today = rank["today"]["rank"].string ?? "N/A"
-                    let peak = rank["today"]["peak"].string ?? "N/A"
-                    var jps = rank["today"]["jps"].string ?? "N/A"
-                    if jps != "N/A"{
-                     jps = "\(String(format: "%.2f", ceil(Double(jps)!*100)/100))%"
-                    }
-                    
-                    let image: NSImage
-                    var prev = rank["today"]["prev"].intValue
-                    if prev == 0 {
-                        prev = rank["today"]["rank"].intValue + 1
-                    }
-                    
-                    switch rank["today"]["rank"].intValue {
-                    case let x where x < prev:
-                        image = NSImage.init(named: "Green_Arrow_Up")!
-                    case let x where x > prev:
-                        image = NSImage.init(named: "Red_Arrow_Down")!
-                    default:
-                        image = NSImage.init(named: "left_right")!
-                    
-                    }
-                    
-                    myRay.append(Leaderboard_Tabler(rank["user"].string!, today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: jps, image: image))
+                let yestdy = rank["yesterday"]["rank"].string ?? "N/A"
+                let today = rank["today"]["rank"].string ?? "N/A"
+                let peak = rank["today"]["peak"].string ?? "N/A"
+                var jps = rank["today"]["jps"].string ?? "N/A"
+                if jps != "N/A"{
+                    jps = "\(String(format: "%.2f", ceil(Double(jps)!*100)/100))%"
                 }
-            } catch {
-                // contents could not be loaded
-                print("// contents could not be loaded")
+                
+                let image: NSImage
+                var prev = rank["today"]["prev"].intValue
+                if prev == 0 {
+                    prev = rank["today"]["rank"].intValue + 1
+                }
+                
+                switch rank["today"]["rank"].intValue {
+                case let x where x < prev:
+                    image = NSImage.init(named: "Green_Arrow_Up")!
+                case let x where x > prev:
+                    image = NSImage.init(named: "Red_Arrow_Down")!
+                default:
+                    image = NSImage.init(named: "left_right")!
+                    
+                }
+                
+                self.myRay.append(Leaderboard_Tabler("", today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: jps, image: image))
+                
+                
+                self.table.reloadData()
+                DispatchQueue.main.async {
+                    self.table.superview?.superview?.superview?.subviews[2].isHidden = true
+                }
             }
-        } else {
-            print("Something isnt right")
         }
     }
     

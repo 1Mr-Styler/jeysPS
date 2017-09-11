@@ -156,6 +156,7 @@ extension Notification.Name {
     static let MB_ACTIVITY_WORKING = Notification.Name("MB_ACTIVITY_WORKING")
     static let MB_ACTIVITY_INACTIVE = Notification.Name("MB_ACTIVITY_INACTIVE")
     static let MB_ACTIVITY_STUDYING = Notification.Name("MB_ACTIVITY_STUDYING")
+    static let LDBRD_DONE_LOADING = Notification.Name("LDBRD_DONE_LOADING")
 }
 
 enum MB_Activity {

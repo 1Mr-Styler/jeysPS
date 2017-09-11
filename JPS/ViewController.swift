@@ -24,6 +24,13 @@ class ViewController: NSViewController {
             enableMenu.state = UserDefaults.standard.integer(forKey: "showMB")
         }
         
+        if self.nibName == "leaderboard" {
+            //Gif laoder         
+            let loadingGif = self.view.subviews[2] as! NSImageView
+            loadingGif.canDrawSubviewsIntoLayer = true
+            loadingGif.imageScaling = .scaleProportionallyDown
+        }
+        
         let activityNibs: [String] = ["Working", "Inactive", "Sleeping", "Studying"]
         
         if activityNibs.contains(self.nibName!) {
