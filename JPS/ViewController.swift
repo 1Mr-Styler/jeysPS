@@ -32,7 +32,7 @@ class ViewController: NSViewController {
             loadingGif.imageScaling = .scaleProportionallyDown
         }
         
-        let activityNibs: [String] = ["Working", "Inactive", "Sleeping", "Studying"]
+        let activityNibs: [String] = ["Working", "Inactive", "Sleeping", "Studying", "RollBack"]
         
         if activityNibs.contains(self.nibName!) {
             let vi = self.view.subviews[0]

@@ -49,7 +49,7 @@ class Leaderboard: NSObject, NSTableViewDataSource {
                     
                 }
                 
-                self.myRay.append(Leaderboard_Tabler("", today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: jps, image: image))
+                self.myRay.append(Leaderboard_Tabler(rank["user"].string!, today: "#\(today)", yesterday: "#\(yestdy)", peak: "#\(peak)", jps: jps, image: image))
                 
                 
                 self.table.reloadData()

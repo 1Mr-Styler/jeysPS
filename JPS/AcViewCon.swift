@@ -89,6 +89,11 @@ class AcViewCon: NSViewController {
         self.loadVC(vc: Activity.studying.getView(), activity: "study")
     }
     
+    @IBAction func rollBack(_ sender: Any) {
+        self.hgBtnTo(-3, y: 7)
+        self.loadVC(vc: ViewController(nibName: "RollBack", bundle: nil)!, activity: "rb", reload: true)
+    }
+    
     func getBGView() -> NSView {
         let vw = NSView.init(frame: NSRect.init(x: 20, y: 296, width: 86, height: 54))
         vw.layer?.backgroundColor = NSColor.red.cgColor// NSColor.init(red: CGFloat(0.941), green: CGFloat(0.973), blue: CGFloat(1.0), alpha: CGFloat(1)).cgColor

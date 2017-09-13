@@ -26,6 +26,12 @@
 		6654E4C81EF65452003608E9 /* inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C71EF65452003608E9 /* inactive.png */; };
 		6654E4CA1EF657F4003608E9 /* study.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C91EF657F4003608E9 /* study.png */; };
 		6654E4CE1EF6E10D003608E9 /* sl_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */; };
+		665F71ED1F69562C00D9B481 /* rollback-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 665F71EC1F69562C00D9B481 /* rollback-icon.png */; };
+		665F71EF1F69594400D9B481 /* RollBack.xib in Resources */ = {isa = PBXBuildFile; fileRef = 665F71EE1F69594400D9B481 /* RollBack.xib */; };
+		665F71F21F695C0400D9B481 /* RollBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665F71F11F695C0400D9B481 /* RollBackView.swift */; };
+		665F71F51F697B8100D9B481 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665F71F41F697B8100D9B481 /* NewActivityView.swift */; };
+		665F71F71F69831800D9B481 /* rollback.png in Resources */ = {isa = PBXBuildFile; fileRef = 665F71F61F69831800D9B481 /* rollback.png */; };
+		665F71F91F69B1F000D9B481 /* RollBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665F71F81F69B1F000D9B481 /* RollBack.swift */; };
 		666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666730B91E8C42B5003F40C4 /* Pref.swift */; };
 		666730BC1E8C42B5003F40C4 /* Pref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 666730BA1E8C42B5003F40C4 /* Pref.xib */; };
 		66795A791E980A86009A0089 /* Upload.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66795A781E980A86009A0089 /* Upload.xib */; };
@@ -139,6 +145,12 @@
 		6654E4C71EF65452003608E9 /* inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactive.png; sourceTree = "<group>"; };
 		6654E4C91EF657F4003608E9 /* study.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = study.png; sourceTree = "<group>"; };
 		6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sl_bg.jpg; sourceTree = "<group>"; };
+		665F71EC1F69562C00D9B481 /* rollback-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rollback-icon.png"; sourceTree = "<group>"; };
+		665F71EE1F69594400D9B481 /* RollBack.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RollBack.xib; sourceTree = "<group>"; };
+		665F71F11F695C0400D9B481 /* RollBackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollBackView.swift; sourceTree = "<group>"; };
+		665F71F41F697B8100D9B481 /* NewActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
+		665F71F61F69831800D9B481 /* rollback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rollback.png; sourceTree = "<group>"; };
+		665F71F81F69B1F000D9B481 /* RollBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollBack.swift; sourceTree = "<group>"; };
 		666730B91E8C42B5003F40C4 /* Pref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pref.swift; sourceTree = "<group>"; };
 		666730BA1E8C42B5003F40C4 /* Pref.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Pref.xib; sourceTree = "<group>"; };
 		666730BD1E8C55AA003F40C4 /* JPS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JPS.entitlements; sourceTree = "<group>"; };
@@ -305,6 +317,25 @@
 			name = Nibz;
 			sourceTree = "<group>";
 		};
+		665F71F01F695BEC00D9B481 /* RollBack */ = {
+			isa = PBXGroup;
+			children = (
+				665F71F31F69611A00D9B481 /* Nibs */,
+				665F71F11F695C0400D9B481 /* RollBackView.swift */,
+				665F71F41F697B8100D9B481 /* NewActivityView.swift */,
+				665F71F81F69B1F000D9B481 /* RollBack.swift */,
+			);
+			name = RollBack;
+			sourceTree = "<group>";
+		};
+		665F71F31F69611A00D9B481 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				665F71EE1F69594400D9B481 /* RollBack.xib */,
+			);
+			name = Nibs;
+			sourceTree = "<group>";
+		};
 		6687A1031E83057F004554AE = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +474,7 @@
 		66BB826D1EDF0EB4001157F6 /* SplitController */ = {
 			isa = PBXGroup;
 			children = (
+				665F71F01F695BEC00D9B481 /* RollBack */,
 				66BB827F1EDF1181001157F6 /* Resource */,
 				66BB82761EDF1102001157F6 /* Nibs */,
 				66BB82741EDF0FB4001157F6 /* TableController.swift */,
@@ -475,6 +507,8 @@
 		66BB827F1EDF1181001157F6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				665F71F61F69831800D9B481 /* rollback.png */,
+				665F71EC1F69562C00D9B481 /* rollback-icon.png */,
 				66EE5D9E1F1CC1560025DA0E /* dummy.png */,
 				6654E4C91EF657F4003608E9 /* study.png */,
 				6654E4C71EF65452003608E9 /* inactive.png */,
@@ -647,12 +681,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				665F71EF1F69594400D9B481 /* RollBack.xib in Resources */,
 				668CD4281EB220D60047AAEF /* bgAbout.png in Resources */,
 				6683A4B71EA7B81D003461A8 /* logo v2-t.ico in Resources */,
 				668CD41E1EB1E9850047AAEF /* General.xib in Resources */,
 				66EE5D9F1F1CC1560025DA0E /* dummy.png in Resources */,
 				66C595881F2206B400177506 /* mbdata.json in Resources */,
 				66BB82891EDF11AF001157F6 /* yearly.png in Resources */,
+				665F71F71F69831800D9B481 /* rollback.png in Resources */,
 				661616FF1F3860F7007A3443 /* TopMonth.xib in Resources */,
 				660451931EE828770046828C /* Activity.xib in Resources */,
 				66EE5D9D1F1CBF4A0025DA0E /* leaderboard.xib in Resources */,
@@ -673,6 +709,7 @@
 				66BB827B1EDF1156001157F6 /* sideBar.xib in Resources */,
 				66EF45711E96AA7300DFFFC7 /* Updates.xib in Resources */,
 				66BB82851EDF11AF001157F6 /* el.png in Resources */,
+				665F71ED1F69562C00D9B481 /* rollback-icon.png in Resources */,
 				6687A1151E830581004554AE /* MainMenu.xib in Resources */,
 				663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */,
 				66BB82911EDF15AD001157F6 /* Sleeping.xib in Resources */,
@@ -864,8 +901,10 @@
 				660724C91F65B99F00867210 /* UploadView.swift in Sources */,
 				66134A9E1F20B5B900A891DA /* MenuBarVC.swift in Sources */,
 				66BBEC3C1F0BAA5C006232C0 /* Wyd.swift in Sources */,
+				665F71F51F697B8100D9B481 /* NewActivityView.swift in Sources */,
 				669CD5501E885ABD00A0E9FB /* WorkingClass.swift in Sources */,
 				666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */,
+				665F71F21F695C0400D9B481 /* RollBackView.swift in Sources */,
 				66D4AC451E85265A007B340C /* SleepHandler.swift in Sources */,
 				6683A4701EA758BA003461A8 /* dataRetro.swift in Sources */,
 				66BB826F1EDF0ED3001157F6 /* Juveni.swift in Sources */,
@@ -877,6 +916,7 @@
 				66BB82721EDF0F62001157F6 /* sideBar.swift in Sources */,
 				66134A9D1F20B5B900A891DA /* MenuBar.swift in Sources */,
 				66C595871F2206B400177506 /* MBActivityHandler.swift in Sources */,
+				665F71F91F69B1F000D9B481 /* RollBack.swift in Sources */,
 				66134A9F1F20B5B900A891DA /* EventMonitoring.swift in Sources */,
 				668CD4241EB215100047AAEF /* about.swift in Sources */,
 				669CD5521E885F6400A0E9FB /* Studying.swift in Sources */,
