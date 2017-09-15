@@ -11,6 +11,7 @@ import Cocoa
 class about: NSWindowController {
 
     var mainW = NSWindow()
+    var appDetails = "Version 0.8.2 (LYC170211) "
     
     override init(window: NSWindow?) {
         super.init(window: window)

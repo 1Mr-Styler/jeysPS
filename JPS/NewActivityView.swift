@@ -49,6 +49,12 @@ class NewActivityView: NSView {
                         self.newActivity.selectItem(withTitle: jsond["gma_pred"].stringValue)
                     }
                     
+                    self.new_from_plain_picker.maxDate = self.new_to_plain_picker.dateValue
+                    self.clock.maxDate = self.new_to_plain_picker.dateValue
+                    
+                    self.new_from_plain_picker.minDate = self.new_from_plain_picker.dateValue
+                    self.clock.minDate = self.new_from_plain_picker.dateValue
+                    
                     self.unhideAll()
                 } else {
                     for i in 0...12 {
@@ -67,6 +73,7 @@ class NewActivityView: NSView {
             self.subviews[12].isHidden = false
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.new_clock(_:)), name: RollBack.RB_DateChange, object: nil)
     }
     
     
@@ -85,32 +92,61 @@ class NewActivityView: NSView {
             self.subviews[i].isHidden = false
         }
     }
-    @IBOutlet var newActivity: NSPopUpButton!
     
+    @IBOutlet var newActivity: NSPopUpButton!
     @IBOutlet var new_from_plain_picker: NSDatePicker!
-    @IBAction func new_clock(_ sender: NSDatePicker) {
-        Swift.print(sender.dateValue)
-        new_from_plain_picker.dateValue = sender.dateValue
+    @IBOutlet var new_to_plain_picker: NSDatePicker!
+    
+    
+    @IBAction func new_clock(_ sender: Any) {
+        if let sendr = sender as? NSDatePicker {
+            NotificationCenter.default.post(name: RollBack.NA_DateChange, object: nil, userInfo: ["V": sendr.dateValue])
+            new_from_plain_picker.dateValue = sendr.dateValue
+        } else {
+            let note = sender as! Notification
+            let noteInfo = (note.userInfo as! [String: Date])
+            
+            new_from_plain_picker.dateValue = noteInfo["V"]! + 1
+            clock.dateValue = noteInfo["V"]! + 1
+        }
+
     }
     
-    @IBOutlet var new_to_plain_picker: NSDatePicker!
     @IBAction func new_clock2(_ sender: NSDatePicker) {
-        Swift.print(sender.dateValue)
         new_to_plain_picker.dateValue = sender.dateValue
     }
     
     
     @IBAction func new_fromPicker(_ sender: NSDatePicker) {
-        Swift.print(sender.dateValue)
+        NotificationCenter.default.post(name: RollBack.NA_DateChange, object: nil, userInfo: ["V": sender.dateValue])
         clock.dateValue = sender.dateValue
     }
     @IBAction func new_toPicker(_ sender: NSDatePicker) {
         clock2.dateValue = sender.dateValue
     }
     
-    
     @IBAction func roll(_ sender: NSButton) {
-        Swift.print(clock.dateValue.timeIntervalSince1970)
-        Swift.print(clock2.dateValue.timeIntervalSince1970)
+        sender.isEnabled = false
+        hideAll()
+        self.subviews[11].isHidden = true
+        
+        Alamofire.request("https://jps.lyshnia.com/api/roll.php?cdc=\(userHandler.cdc)&roll&activity=\((newActivity.selectedItem?.title)!)&from=\(Int(clock.dateValue.timeIntervalSince1970))").responseString { (response) in
+            
+            Swift.print(response.result.value ?? "ok")
+            
+            let contents = response.result.value
+            let ldb = contents?.data(using: .utf8, allowLossyConversion: false)
+            let jsond = JSON(data: ldb!)
+            
+            if jsond["status"] == 1 {
+                (self.subviews[9] as! NSButton).image = NSImage(named: "check.png")
+                (self.subviews[9] as! NSButton).title = "Success!"
+            } else {
+                (self.subviews[9] as! NSButton).image = NSImage(named: "x-check.png")
+                (self.subviews[9] as! NSButton).title = "Failed!"
+            }
+            self.unhideAll()
+        }
+        
     }
 }

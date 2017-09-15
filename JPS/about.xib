@@ -44,6 +44,9 @@
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="self.appDetails" id="aoa-cd-23m"/>
+                        </connections>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1K-Ed-gUl">
                         <rect key="frame" x="179" y="45" width="334" height="54"/>
@@ -84,6 +87,7 @@
             </connections>
             <point key="canvasLocation" x="284.5" y="284.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="qzI-46-jaT"/>
     </objects>
     <resources>
         <image name="icon" width="1024" height="1024"/>

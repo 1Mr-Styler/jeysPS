@@ -11,13 +11,13 @@ import Alamofire
 
 class RollBack: NSObject {
 
+    static let NA_DateChange = Notification.Name("NA_DateChange")
+    static let RB_DateChange = Notification.Name("RB_DateChange")
+    
     override init() {
         super.init()
         
-        Alamofire.request("https://jps.lyshnia.com/api/roll.php?cdc=\(userHandler.cdc)&rollee").responseJSON { (response) in
-            
-            print(response)
-        }
+        
     }
     
     static func rollee() {
