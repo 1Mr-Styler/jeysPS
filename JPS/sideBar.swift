@@ -34,7 +34,7 @@ class sideBar: NSViewController {
         
         switch SL {
         case .MOST_PRODUCTIVE_DAY:
-            print("")
+            detailView?.push(PieChartViewController(nibName: "MMPD", bundle: nil)!, tag: 6, isActivity: false)
         case .LEAST_PRODUCTIVE_DAY:
             print("")
         case .LEADERBOARD:

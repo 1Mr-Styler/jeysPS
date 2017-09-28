@@ -9,7 +9,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var mainTabView: NSTabView!
@@ -47,6 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menubar?.setUp()
             self.window.close()
         }
+        
+        NSUserNotificationCenter.default.delegate = self
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -122,6 +124,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         About.showWindow(self.window)
     }
 
-}
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didDeliver notification: NSUserNotification) {
+        print("Delivered")
+    }
+    
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+        switch (notification.activationType) {
+        case .replied:
+            guard let res = notification.response else { return }
+            print("User replied: \(res.string)")
+        default:
+            break;
+        }
 
+    }
+    
+}
 

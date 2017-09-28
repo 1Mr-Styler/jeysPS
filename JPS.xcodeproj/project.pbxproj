@@ -13,7 +13,10 @@
 		660451971EE829E30046828C /* sleep.png in Resources */ = {isa = PBXBuildFile; fileRef = 660451951EE829E30046828C /* sleep.png */; };
 		660451991EE82B880046828C /* AcViewCon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660451981EE82B880046828C /* AcViewCon.swift */; };
 		660724C91F65B99F00867210 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660724C81F65B99F00867210 /* UploadView.swift */; };
+		660816301F7CF75900AE1B8C /* SmallCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6608162F1F7CF75900AE1B8C /* SmallCircles.swift */; };
 		660B34DF1F376D72003E52A1 /* TopWeek.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660B34DE1F376D72003E52A1 /* TopWeek.xib */; };
+		660FF64B1F6FE3AD004C9811 /* Notifix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660FF64A1F6FE3AD004C9811 /* Notifix.swift */; };
+		660FF64E1F701E55004C9811 /* MMPD.xib in Resources */ = {isa = PBXBuildFile; fileRef = 660FF64D1F701E55004C9811 /* MMPD.xib */; };
 		66134A9C1F20B5B900A891DA /* Main.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66134A981F20B5B900A891DA /* Main.xib */; };
 		66134A9D1F20B5B900A891DA /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66134A991F20B5B900A891DA /* MenuBar.swift */; };
 		66134A9E1F20B5B900A891DA /* MenuBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66134A9A1F20B5B900A891DA /* MenuBarVC.swift */; };
@@ -23,8 +26,10 @@
 		661617011F386158007A3443 /* Top10Month.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661617001F386158007A3443 /* Top10Month.swift */; };
 		6619548B1F6C6AC3006459DF /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6619548A1F6C6AC3006459DF /* check.png */; };
 		6619548D1F6C6CF8006459DF /* x-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6619548C1F6C6CF8006459DF /* x-check.png */; };
+		661C6AAA1F7C111600DC9124 /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661C6AA91F7C111600DC9124 /* PieChartViewController.swift */; };
 		663FB5EA1EA8BFE500426126 /* LogOut.xib in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5E91EA8BFE500426126 /* LogOut.xib */; };
 		663FB5EC1EA8C38F00426126 /* exit-button-icon-18.png in Resources */ = {isa = PBXBuildFile; fileRef = 663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */; };
+		6650E1DA1F74FAFA0040E913 /* MMPD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6650E1D91F74FAFA0040E913 /* MMPD.swift */; };
 		6654E4C81EF65452003608E9 /* inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C71EF65452003608E9 /* inactive.png */; };
 		6654E4CA1EF657F4003608E9 /* study.png in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4C91EF657F4003608E9 /* study.png */; };
 		6654E4CE1EF6E10D003608E9 /* sl_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */; };
@@ -134,7 +139,10 @@
 		660451951EE829E30046828C /* sleep.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sleep.png; sourceTree = "<group>"; };
 		660451981EE82B880046828C /* AcViewCon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcViewCon.swift; sourceTree = "<group>"; };
 		660724C81F65B99F00867210 /* UploadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		6608162F1F7CF75900AE1B8C /* SmallCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallCircles.swift; sourceTree = "<group>"; };
 		660B34DE1F376D72003E52A1 /* TopWeek.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopWeek.xib; sourceTree = "<group>"; };
+		660FF64A1F6FE3AD004C9811 /* Notifix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifix.swift; sourceTree = "<group>"; };
+		660FF64D1F701E55004C9811 /* MMPD.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MMPD.xib; sourceTree = "<group>"; };
 		66134A981F20B5B900A891DA /* Main.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Main.xib; sourceTree = "<group>"; };
 		66134A991F20B5B900A891DA /* MenuBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		66134A9A1F20B5B900A891DA /* MenuBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarVC.swift; sourceTree = "<group>"; };
@@ -144,8 +152,10 @@
 		661617001F386158007A3443 /* Top10Month.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Top10Month.swift; sourceTree = "<group>"; };
 		6619548A1F6C6AC3006459DF /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		6619548C1F6C6CF8006459DF /* x-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x-check.png"; sourceTree = "<group>"; };
+		661C6AA91F7C111600DC9124 /* PieChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		663FB5E91EA8BFE500426126 /* LogOut.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogOut.xib; sourceTree = "<group>"; };
 		663FB5EB1EA8C38F00426126 /* exit-button-icon-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exit-button-icon-18.png"; sourceTree = "<group>"; };
+		6650E1D91F74FAFA0040E913 /* MMPD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MMPD.swift; sourceTree = "<group>"; };
 		6654E4C71EF65452003608E9 /* inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactive.png; sourceTree = "<group>"; };
 		6654E4C91EF657F4003608E9 /* study.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = study.png; sourceTree = "<group>"; };
 		6654E4CD1EF6E10D003608E9 /* sl_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sl_bg.jpg; sourceTree = "<group>"; };
@@ -298,6 +308,13 @@
 			name = Prefs;
 			sourceTree = "<group>";
 		};
+		660FF6491F6FE38C004C9811 /* GMA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = GMA;
+			sourceTree = "<group>";
+		};
 		66134A961F20B58000A891DA /* MenuBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +336,16 @@
 				66134A981F20B5B900A891DA /* Main.xib */,
 			);
 			name = Nibz;
+			sourceTree = "<group>";
+		};
+		661C6AA81F7C10F000DC9124 /* PDs */ = {
+			isa = PBXGroup;
+			children = (
+				6650E1D91F74FAFA0040E913 /* MMPD.swift */,
+				661C6AA91F7C111600DC9124 /* PieChartViewController.swift */,
+				6608162F1F7CF75900AE1B8C /* SmallCircles.swift */,
+			);
+			name = PDs;
 			sourceTree = "<group>";
 		};
 		665F71F01F695BEC00D9B481 /* RollBack */ = {
@@ -369,6 +396,7 @@
 		6687A10E1E830580004554AE /* JPS */ = {
 			isa = PBXGroup;
 			children = (
+				660FF6491F6FE38C004C9811 /* GMA */,
 				66134A961F20B58000A891DA /* MenuBar */,
 				66BB826D1EDF0EB4001157F6 /* SplitController */,
 				668CD41F1EB1F04D0047AAEF /* Random Images */,
@@ -384,6 +412,7 @@
 				6683A46F1EA758BA003461A8 /* dataRetro.swift */,
 				668CD4261EB215150047AAEF /* About */,
 				CAD8983AD78026C73E38D0C1 /* jinfo.json */,
+				660FF64A1F6FE3AD004C9811 /* Notifix.swift */,
 			);
 			path = JPS;
 			sourceTree = "<group>";
@@ -480,6 +509,7 @@
 		66BB826D1EDF0EB4001157F6 /* SplitController */ = {
 			isa = PBXGroup;
 			children = (
+				661C6AA81F7C10F000DC9124 /* PDs */,
 				665F71F01F695BEC00D9B481 /* RollBack */,
 				66BB827F1EDF1181001157F6 /* Resource */,
 				66BB82761EDF1102001157F6 /* Nibs */,
@@ -506,6 +536,7 @@
 				66EE5D9C1F1CBF4A0025DA0E /* leaderboard.xib */,
 				660B34DE1F376D72003E52A1 /* TopWeek.xib */,
 				661616FE1F3860F7007A3443 /* TopMonth.xib */,
+				660FF64D1F701E55004C9811 /* MMPD.xib */,
 			);
 			name = Nibs;
 			sourceTree = "<group>";
@@ -638,6 +669,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5Q8G8T8986;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -694,6 +726,7 @@
 				66EE5D9F1F1CC1560025DA0E /* dummy.png in Resources */,
 				66C595881F2206B400177506 /* mbdata.json in Resources */,
 				66BB82891EDF11AF001157F6 /* yearly.png in Resources */,
+				660FF64E1F701E55004C9811 /* MMPD.xib in Resources */,
 				665F71F71F69831800D9B481 /* rollback.png in Resources */,
 				661616FF1F3860F7007A3443 /* TopMonth.xib in Resources */,
 				660451931EE828770046828C /* Activity.xib in Resources */,
@@ -908,12 +941,15 @@
 				66BB82751EDF0FB4001157F6 /* TableController.swift in Sources */,
 				660724C91F65B99F00867210 /* UploadView.swift in Sources */,
 				66134A9E1F20B5B900A891DA /* MenuBarVC.swift in Sources */,
+				660FF64B1F6FE3AD004C9811 /* Notifix.swift in Sources */,
 				66BBEC3C1F0BAA5C006232C0 /* Wyd.swift in Sources */,
 				665F71F51F697B8100D9B481 /* NewActivityView.swift in Sources */,
 				669CD5501E885ABD00A0E9FB /* WorkingClass.swift in Sources */,
+				661C6AAA1F7C111600DC9124 /* PieChartViewController.swift in Sources */,
 				666730BB1E8C42B5003F40C4 /* Pref.swift in Sources */,
 				665F71F21F695C0400D9B481 /* RollBackView.swift in Sources */,
 				66D4AC451E85265A007B340C /* SleepHandler.swift in Sources */,
+				660816301F7CF75900AE1B8C /* SmallCircles.swift in Sources */,
 				6683A4701EA758BA003461A8 /* dataRetro.swift in Sources */,
 				66BB826F1EDF0ED3001157F6 /* Juveni.swift in Sources */,
 				66C5958A1F2229B800177506 /* MBmainView.swift in Sources */,
@@ -933,6 +969,7 @@
 				661617011F386158007A3443 /* Top10Month.swift in Sources */,
 				66EF456E1E96A81D00DFFFC7 /* ViewController.swift in Sources */,
 				66D4AC471E85AA34007B340C /* userHandler.swift in Sources */,
+				6650E1DA1F74FAFA0040E913 /* MMPD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,12 +1127,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JPS/JPS.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JPS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1106,12 +1146,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = JPS/JPS.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JPS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -1180,13 +1223,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5Q8G8T8986;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JPSHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -1197,13 +1242,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 5Q8G8T8986;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = JPSHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lyshnia.JPSHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

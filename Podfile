@@ -10,6 +10,7 @@ target 'JPS' do
   # Pods for JPS
   pod 'SwiftyJSON'
   pod 'Alamofire', '~> 4.4'
+  pod 'CorePlot', '~> 2.2'
 
   target 'JPSTests' do
     inherit! :search_paths

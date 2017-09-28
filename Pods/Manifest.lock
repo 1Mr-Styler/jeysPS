@@ -1,15 +1,18 @@
 PODS:
   - Alamofire (4.4.0)
+  - CorePlot (2.2)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - CorePlot (~> 2.2)
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: '05764585c2b468f956d76f87a00b6e28655fcb40'
+PODFILE CHECKSUM: 692ba6c1ae2e196125ec60a8c500f059438b399f
 
 COCOAPODS: 1.2.1
