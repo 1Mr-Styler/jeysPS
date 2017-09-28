@@ -41,4 +41,12 @@ class MMPD: NSView {
         
     }
 
+    @IBAction func switchWitch(_ sender: NSSegmentedControl) {
+        if sender.label(forSegment: sender.selectedSegment) == "Most Productive" {
+            self.vc.initPlot()
+        } else {
+            self.vc.initPlot(with: "LP")
+        }
+    }
+    
 }

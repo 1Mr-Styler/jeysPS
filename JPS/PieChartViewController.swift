@@ -15,6 +15,8 @@ class PieChartViewController: NSViewController {
     var mainView: MMPD!
     var mainData: [(key: String, value: Double)]!
     var cls = [(r: CGFloat, g: CGFloat, b: CGFloat)]()
+    dynamic var mDay : String = ""
+    dynamic var lDay : String = "THE DAY WHEN YOUR INNER BEAST AWAKENS"
     
     // MARK - Activities
     @IBOutlet var a1: NSTextField!
@@ -49,9 +51,17 @@ class PieChartViewController: NSViewController {
         //        initPlot()
     }
     
-    func initPlot() {
-        let day = self.mainView.jsond["top"][0].stringValue
-        let data = self.mainView.jsond["data"][day]
+    func initPlot(with: String = "MP") {
+        let day = with == "MP" ? self.mainView.jsond["top"][0].stringValue
+            : self.mainView.jsond["top"].arrayValue.last?.stringValue
+        
+        if with != "MP" {
+            self.lDay = "AND \(userHandler.usn) RESTED ON THE \(self.nth(day: day!)) DAY".uppercased()
+        } else {
+            self.lDay = "THE DAY WHEN YOUR INNER BEAST AWAKENS"
+        }
+        self.mDay = (day?.uppercased())! + "S"
+        let data = self.mainView.jsond["data"][day!]
         let fields = ["sh", "ud", "wh", "ph", "ih"]
         
         var poi = [String: Double]()
@@ -176,6 +186,25 @@ class PieChartViewController: NSViewController {
     func hms (seconds : Int) -> String {
         let (h, m, _) = (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
         return "\(h)h \(m)m"
+    }
+    
+    func nth(day: String) -> String {
+        switch day.lowercased() {
+        case "monday":
+            return "1st"
+        case "tuesday":
+            return "2nd"
+        case "wednesday":
+            return "3rd"
+        case "thursday":
+            return "4th"
+        case "friday":
+            return "5th"
+        case "saturday":
+            return "6th"
+        default:
+            return "7th"
+        }
     }
 }
 

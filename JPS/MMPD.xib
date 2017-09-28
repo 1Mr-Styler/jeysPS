@@ -38,15 +38,20 @@
                     <rect key="frame" x="0.0" y="321" width="570" height="39"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L56-FB-gLT">
-                            <rect key="frame" x="167" y="5" width="235" height="30"/>
+                        <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7u2-v6-b7t">
+                            <rect key="frame" x="144" y="7" width="283" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Most Productive Day" id="1Ka-Re-gKQ">
-                                <font key="font" metaFont="system" size="25"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="smallSquare" trackingMode="selectOne" id="Uf1-32-HF2">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="Most Productive" width="140" selected="YES"/>
+                                    <segment label="Least Productive" width="140" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="switchWitch:" target="c22-O7-iKe" id="dz2-Ju-tXl"/>
+                            </connections>
+                        </segmentedControl>
                     </subviews>
                 </customView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YZ-fs-ASm">
@@ -57,6 +62,9 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.mDay" id="3uA-Ba-a2a"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRh-68-p9h">
                     <rect key="frame" x="218" y="285" width="306" height="17"/>
@@ -66,6 +74,9 @@
                         <color key="textColor" red="0.52760152284263961" green="0.52760152284263961" blue="0.52760152284263961" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="-2" name="value" keyPath="self.lDay" id="2CQ-ey-B96"/>
+                    </connections>
                 </textField>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qUI-Yl-dCg">
                     <rect key="frame" x="126" y="277" width="364" height="5"/>

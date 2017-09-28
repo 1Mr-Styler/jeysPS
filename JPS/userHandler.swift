@@ -19,6 +19,16 @@ class userHandler: NSObject {
         }
     }
     
+    class var usn : String {
+        get {
+            if let bl3 =  UserDefaults.standard.string(forKey: "username") {
+                return bl3
+            } else {
+                return ""
+            }
+        }
+    }
+    
     var hasMenuBar : Bool {
         let hmb = UserDefaults.standard.integer(forKey: "showMB")
         if hmb == 1 {
