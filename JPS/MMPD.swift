@@ -14,6 +14,7 @@ class MMPD: NSView {
     @IBOutlet var MPD: NSTextField!
     var jsond : JSON!
     var vc: PieChartViewController!
+    @IBOutlet weak var loadingGif: NSImageView!
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -21,6 +22,13 @@ class MMPD: NSView {
         self.subviews[0].layer?.backgroundColor = NSColor(red: 249.0/255.0, green: 249.0/255.0, blue: 249.0/255.0, alpha: 1.0).cgColor
         self.layer?.backgroundColor = NSColor.white.cgColor
         self.vc = self.window?.contentViewController?.childViewControllers[1].childViewControllers[1] as! PieChartViewController
+        
+        loadingGif.canDrawSubviewsIntoLayer = true
+        loadingGif.imageScaling = .scaleProportionallyDown
+        for i in self.subviews {
+            i.isHidden = true
+        }
+        self.addSubview(loadingGif)
         
         if userHandler().isLoggedIn() {
             Alamofire.request("https://jps.lyshnia.com/api/pd.php?cdc=\(userHandler.cdc)&mm=0").responseString { (response) in
@@ -33,6 +41,10 @@ class MMPD: NSView {
                 DispatchQueue.main.async {
                     self.MPD.stringValue = self.jsond["top"][0].stringValue.uppercased() + "S"
                     self.vc.initPlot()
+                    self.loadingGif.removeFromSuperview()
+                    for i in self.subviews {
+                        i.isHidden = false
+                    }
                 }
             }
         } else {

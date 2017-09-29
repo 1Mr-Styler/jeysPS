@@ -14,6 +14,7 @@
                 <outlet property="a3" destination="vox-8i-w3t" id="ecb-iy-Jnf"/>
                 <outlet property="a4" destination="XL5-k9-X4E" id="MYs-Q0-ZWy"/>
                 <outlet property="a5" destination="ak5-dn-hd7" id="0us-vI-Q7w"/>
+                <outlet property="avgJPS" destination="jfC-fh-nke" id="rim-Aa-Wl1"/>
                 <outlet property="d1" destination="EgV-du-eta" id="mKw-k3-eNO"/>
                 <outlet property="d2" destination="WE1-pf-6fY" id="0uR-rl-2W6"/>
                 <outlet property="d3" destination="lWp-4G-a36" id="1Dt-vP-41j"/>
@@ -258,12 +259,31 @@
                     <rect key="frame" x="49" y="38" width="236" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfC-fh-nke">
+                    <rect key="frame" x="201" y="15" width="168" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Average JPS of 35.09%" id="DtN-eM-S6X">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" red="0.58463340997695923" green="0.58826011419296265" blue="0.58819907903671265" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <connections>
                 <outlet property="MPD" destination="7YZ-fs-ASm" id="Fjl-jg-54W"/>
+                <outlet property="loadingGif" destination="Wc4-7I-MDi" id="JnT-XA-ZXx"/>
             </connections>
             <point key="canvasLocation" x="167" y="169"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="0dw-Wc-L9d"/>
+        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Wc4-7I-MDi">
+            <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loading" id="sJg-h6-qws"/>
+            <point key="canvasLocation" x="260" y="436"/>
+        </imageView>
     </objects>
+    <resources>
+        <image name="loading" width="630" height="637"/>
+    </resources>
 </document>

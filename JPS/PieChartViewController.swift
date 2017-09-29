@@ -24,6 +24,7 @@ class PieChartViewController: NSViewController {
     @IBOutlet var a3: NSTextField!
     @IBOutlet var a4: NSTextField!
     @IBOutlet var a5: NSTextField!
+    @IBOutlet var avgJPS: NSTextField!
     
     // MARK - Duration
     @IBOutlet var d1: NSTextField!
@@ -71,6 +72,8 @@ class PieChartViewController: NSViewController {
         let nPoi = poi.sorted {
             return $0.value > $1.value
         }
+        
+        self.avgJPS.stringValue = String.init(format: "Average JPS of %0.2f%%", data["jps"].floatValue)
         
         self.mainData = nPoi
         let colors : [[CGFloat]] = [[0.92, 0.28, 0.25], [0.06, 0.80, 0.48], [0.22, 0.33, 0.49], [0.98, 0.8, 0.2], [0.15, 0.47, 0.98]].shuffled()
